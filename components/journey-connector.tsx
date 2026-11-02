@@ -15,6 +15,8 @@ export function JourneyConnector({ from, to, label, className }: JourneyConnecto
   const { ref, inView } = useInView<HTMLDivElement>(0.4)
   const maskId = useId()
   const path = `M ${from} 0 C ${from} 55, ${to} 45, ${to} 100`
+  // With these control points the curve passes through ((from + to) / 2, 50) at t = 0.5.
+  const markerStyle = { left: `${(from + to) / 2}%` }
 
   return (
     <div ref={ref} aria-hidden="true" className={cn('relative h-32 w-full md:h-44', className)}>
@@ -49,8 +51,9 @@ export function JourneyConnector({ from, to, label, className }: JourneyConnecto
         />
       </svg>
       <span
+        style={markerStyle}
         className={cn(
-          'absolute top-1/2 left-1/2 flex size-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-primary bg-background transition-all delay-500 duration-500 motion-reduce:transition-none',
+          'absolute top-1/2 flex size-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-primary bg-background transition-all delay-500 duration-500 motion-reduce:transition-none',
           inView ? 'scale-100 opacity-100' : 'scale-50 opacity-0',
         )}
       >
@@ -58,8 +61,9 @@ export function JourneyConnector({ from, to, label, className }: JourneyConnecto
       </span>
       {label ? (
         <span
+          style={markerStyle}
           className={cn(
-            'absolute top-1/2 left-1/2 ml-7 -translate-y-1/2 font-serif text-lg whitespace-nowrap text-muted-foreground italic transition-opacity delay-700 duration-500 motion-reduce:transition-none',
+            'absolute top-1/2 ml-7 -translate-y-1/2 font-serif text-lg whitespace-nowrap text-muted-foreground italic transition-opacity delay-700 duration-500 motion-reduce:transition-none',
             inView ? 'opacity-100' : 'opacity-0',
           )}
         >
