@@ -40,17 +40,20 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
           alt={project.imageAlt}
           width={1024}
           height={1024}
-          className="h-auto w-full rounded-2xl transition-transform duration-500 group-hover:scale-[1.02]"
+          className={cn(
+            'h-auto w-full rounded-[2.5rem] transition-transform duration-500 group-hover:rotate-0',
+            imageFirst ? '-rotate-1' : 'rotate-1',
+          )}
           sizes="(min-width: 768px) 448px, 100vw"
         />
       </Link>
 
       <div className={cn('max-w-md', imageFirst ? 'md:justify-self-start' : 'md:order-1 md:justify-self-end')}>
-        <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-          {'Stop '}
+        <p className="font-serif text-lg text-muted-foreground italic">
+          {'Stop no. '}
           {stopNumber}
         </p>
-        <h3 id={`${project.slug}-title`} className="mt-2 text-3xl font-semibold tracking-tight text-balance md:text-4xl">
+        <h3 id={`${project.slug}-title`} className="mt-1 font-serif text-5xl tracking-tight text-balance md:text-6xl">
           {project.title}
         </h3>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -63,7 +66,7 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
           {project.tags.map((tag) => (
             <li
               key={tag}
-              className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground"
+              className="rounded-full border border-accent px-3 py-1 text-xs font-medium text-foreground/80"
             >
               {tag}
             </li>
