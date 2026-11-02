@@ -11,7 +11,7 @@ export function Journey() {
       <h2 id="journey-title" className="sr-only">
         Selected projects
       </h2>
-      <JourneyConnector from={30} to={imageColumnX(0)} label="the journey begins" />
+      <JourneyConnector from={50} to={imageColumnX(0)} label="the journey begins" />
       {projects.map((project, index) => (
         <Fragment key={project.slug}>
           <JourneyStop project={project} index={index} />
