@@ -20,7 +20,7 @@ export const projects: Project[] = [
       'Redesigning mobile ordering for an independent café chain. Field research during the morning rush revealed that regulars wanted speed, not choice, so we built a one-tap “usual” that cut average order time by 40%.',
     tags: ['Mobile', 'User research', 'Service design'],
     image: '/projects/brew.png',
-    imageAlt: 'Pencil sketch of a vintage espresso machine with steam rising beside a cup of coffee',
+    imageAlt: 'Flat illustration of a vintage espresso machine with steam rising beside a cup of coffee',
     href: '#',
   },
   {
@@ -32,7 +32,7 @@ export const projects: Project[] = [
       'A transit companion for first-time riders. Through diary studies with newcomers to the city, I mapped the anxious moments of a commute and designed calm, glanceable guidance for every transfer.',
     tags: ['Journey mapping', 'Accessibility', 'iOS'],
     image: '/projects/wayfind.png',
-    imageAlt: 'Pencil sketch of a smartphone showing a map route surrounded by a bus and street signs',
+    imageAlt: 'Flat illustration of a smartphone showing a map route with a bus and location pin beside it',
     href: '#',
   },
   {
@@ -44,7 +44,7 @@ export const projects: Project[] = [
       'Helping neighbors share community garden beds. Co-design workshops with gardeners shaped a booking flow built around seasons rather than calendars, and doubled bed utilization in the pilot.',
     tags: ['Co-design', 'Web app', 'Civic tech'],
     image: '/projects/plot.png',
-    imageAlt: 'Pencil sketch of two raised garden beds with sprouting plants, a watering can and a wooden sign',
+    imageAlt: 'Flat illustration of two raised garden beds with sprouting plants and a watering can',
     href: '#',
   },
   {
@@ -56,7 +56,7 @@ export const projects: Project[] = [
       'A finance dashboard for small business owners who dread spreadsheets. I simplified twelve reports into three plain-language questions owners actually ask, validated through usability testing.',
     tags: ['Dashboard', 'Information architecture', 'Usability testing'],
     image: '/projects/ledger.png',
-    imageAlt: 'Pencil sketch of a laptop displaying a dashboard with charts next to a plant and a mug',
+    imageAlt: 'Flat illustration of a laptop displaying a dashboard with charts next to a potted plant',
     href: '#',
   },
 ]

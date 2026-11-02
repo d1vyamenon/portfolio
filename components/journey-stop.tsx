@@ -40,17 +40,17 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
           alt={project.imageAlt}
           width={1024}
           height={1024}
-          className="h-auto w-full mix-blend-multiply transition-transform duration-500 group-hover:-rotate-1 group-hover:scale-[1.02]"
+          className="h-auto w-full rounded-2xl transition-transform duration-500 group-hover:scale-[1.02]"
           sizes="(min-width: 768px) 448px, 100vw"
         />
       </Link>
 
       <div className={cn('max-w-md', imageFirst ? 'md:justify-self-start' : 'md:order-1 md:justify-self-end')}>
-        <p className="font-hand text-2xl text-primary">
+        <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
           {'Stop '}
           {stopNumber}
         </p>
-        <h3 id={`${project.slug}-title`} className="mt-1 text-3xl font-semibold tracking-tight text-balance md:text-4xl">
+        <h3 id={`${project.slug}-title`} className="mt-2 text-3xl font-semibold tracking-tight text-balance md:text-4xl">
           {project.title}
         </h3>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -63,7 +63,7 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
           {project.tags.map((tag) => (
             <li
               key={tag}
-              className="rounded-full border border-foreground/20 px-3 py-1 text-xs text-foreground/75"
+              className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground"
             >
               {tag}
             </li>
@@ -71,7 +71,7 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
         </ul>
         <Link
           href={project.href}
-          className="group mt-6 inline-flex items-center gap-1.5 font-medium underline decoration-primary decoration-2 underline-offset-4 hover:text-primary"
+          className="group mt-6 inline-flex items-center gap-1.5 font-medium underline decoration-accent decoration-2 underline-offset-4 hover:decoration-primary"
         >
           {'Read the case study'}
           <span className="sr-only">{` for ${project.title}`}</span>

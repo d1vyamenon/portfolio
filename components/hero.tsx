@@ -1,9 +1,18 @@
+import { ArrowDown } from 'lucide-react'
+
 export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="mx-auto max-w-5xl px-6 pt-16 md:pt-24">
       <div className="max-w-2xl">
-        <h1 id="hero-title" className="font-hand text-6xl leading-none text-balance md:text-8xl">
-          {"Hello! I'm Divya!"}
+        <p className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 font-mono text-xs tracking-wide text-secondary-foreground uppercase">
+          <span className="size-1.5 rounded-full bg-accent" aria-hidden="true" />
+          UX Designer
+        </p>
+        <h1
+          id="hero-title"
+          className="mt-6 text-5xl leading-[1.05] font-semibold tracking-tight text-balance md:text-7xl"
+        >
+          {"Hello! I'm Divya."}
         </h1>
         <p className="mt-6 text-xl font-medium tracking-tight text-balance md:text-2xl">
           A UX designer who maps the messy middle between people and the products they rely on.
@@ -14,22 +23,10 @@ export function Hero() {
         </p>
         <a
           href="#journey"
-          className="font-hand group mt-8 inline-flex items-center gap-3 text-3xl text-primary hover:underline hover:decoration-2 hover:underline-offset-8"
+          className="group mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
         >
           View my journey
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 60 24"
-            className="h-6 w-14 transition-transform group-hover:translate-x-1"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M2 14c10-6 22 4 34-2s14-4 20-1" />
-            <path d="M48 5l8 6-9 5" />
-          </svg>
+          <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
         </a>
       </div>
     </section>

@@ -6,7 +6,8 @@ const links = [
 export function SiteHeader() {
   return (
     <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
-      <a href="/" className="font-hand text-3xl leading-none">
+      <a href="/" className="text-lg font-semibold tracking-tight">
+        <span aria-hidden="true" className="mr-2 inline-block size-2.5 rounded-full bg-accent" />
         Divya
       </a>
       <nav aria-label="Main">

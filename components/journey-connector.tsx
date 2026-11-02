@@ -42,24 +42,23 @@ export function JourneyConnector({ from, to, label, className }: JourneyConnecto
           fill="none"
           mask={`url(#${maskId})`}
           vectorEffect="non-scaling-stroke"
-          className="stroke-foreground/70"
+          className="stroke-accent"
           strokeWidth={2}
           strokeLinecap="round"
-          strokeDasharray="2 9"
         />
       </svg>
       <span
         className={cn(
-          'absolute top-1/2 left-1/2 flex size-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-foreground/70 bg-background transition-all delay-500 duration-500 motion-reduce:transition-none',
+          'absolute top-1/2 left-1/2 flex size-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-primary ring-4 ring-background transition-all delay-500 duration-500 motion-reduce:transition-none',
           inView ? 'scale-100 opacity-100' : 'scale-50 opacity-0',
         )}
       >
-        <span className="size-2.5 rounded-full bg-primary" />
+        <span className="size-2 rounded-full bg-accent" />
       </span>
       {label ? (
         <span
           className={cn(
-            'font-hand absolute top-1/2 left-1/2 ml-8 -translate-y-1/2 text-xl whitespace-nowrap text-muted-foreground transition-opacity delay-700 duration-500 motion-reduce:transition-none',
+            'absolute top-1/2 left-1/2 ml-7 -translate-y-1/2 font-mono text-xs tracking-wide whitespace-nowrap text-muted-foreground uppercase transition-opacity delay-700 duration-500 motion-reduce:transition-none',
             inView ? 'opacity-100' : 'opacity-0',
           )}
         >

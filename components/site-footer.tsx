@@ -3,7 +3,7 @@ import { Mail } from 'lucide-react'
 export function SiteFooter() {
   return (
     <footer id="contact" className="mx-auto max-w-5xl scroll-mt-8 px-6 pb-12 text-center">
-      <h2 className="font-hand text-5xl leading-tight text-balance md:text-6xl">{"Let's plan the next route"}</h2>
+      <h2 className="text-4xl font-semibold tracking-tight text-balance md:text-5xl">{"Let's plan the next route"}</h2>
       <p className="mx-auto mt-4 max-w-md leading-relaxed text-pretty text-muted-foreground">
         {"I'm open to full-time roles and thoughtful freelance projects. Say hello — I'd love to hear where you're headed."}
       </p>
@@ -31,7 +31,7 @@ export function SiteFooter() {
           </a>
         </li>
       </ul>
-      <p className="mt-16 text-xs text-muted-foreground">{`© ${new Date().getFullYear()} Divya. Sketched, then designed.`}</p>
+      <p className="mt-16 text-xs text-muted-foreground">{`© ${new Date().getFullYear()} Divya. Designed with care.`}</p>
     </footer>
   )
 }
