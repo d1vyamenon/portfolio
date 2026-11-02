@@ -26,11 +26,11 @@ export function Hero() {
           </span>
         </h1>
         <p className="mt-8 text-xl leading-snug text-balance md:text-2xl">
-          A UX designer who maps the messy middle between people and the products they rely on.
+          Tagline goes here, lorem ipsum dolor sit amet consectetur.
         </p>
         <p className="mx-auto mt-4 max-w-xl leading-relaxed text-pretty text-muted-foreground">
-          I turn research into journeys, journeys into flows, and flows into interfaces that feel obvious in
-          hindsight. Below are a few places I&apos;ve traveled recently — follow the path.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
         </p>
         <a
           href="#journey"
