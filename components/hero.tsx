@@ -7,8 +7,8 @@ import { site } from '@/lib/site'
 export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="site-container pt-16 md:pt-28">
-      <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-        <p className="rounded-full bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground">
+      <div className="max-w-5xl">
+        <p className="inline-block rounded-full bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground">
           {site.title} <span aria-hidden="true">·</span> MHCI at Carnegie Mellon
         </p>
         <h1
@@ -25,7 +25,7 @@ export function Hero() {
           From usability testing for an industrial AI platform to accessibility work on an online learning tool, follow
           the trail through my work, newest first.
         </p>
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-9 flex flex-wrap items-center gap-3">
           <a
             href="#journey"
             className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/85 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
@@ -42,7 +42,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="mt-14 md:mt-16">
+      <div className="mt-12 md:mt-14">
         <HeroTrail label={projects[0].stamp} />
       </div>
     </section>

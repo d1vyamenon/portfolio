@@ -2,14 +2,21 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { CaseStudyBlock } from '@/components/case-study-blocks'
-import { ProjectCover } from '@/components/project-cover'
+import { CaseStudyBlock, Rich } from '@/components/case-study-blocks'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
-import { getProject, projects } from '@/lib/projects'
+import { getProject, projects, type CoverTone } from '@/lib/projects'
 
 type PageProps = {
   params: Promise<{ slug: string }>
+}
+
+// Deep, muted header-band colors, one per project tone, all paired with off-white text.
+const bandColors: Record<CoverTone, string> = {
+  ember: 'bg-[#6e1f2c]',
+  slate: 'bg-[#26363d]',
+  moss: 'bg-[#2f3b2a]',
+  plum: 'bg-[#3d2541]',
 }
 
 export function generateStaticParams() {
@@ -20,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const project = getProject(slug)
   if (!project) return {}
-  return { title: project.title, description: project.summary }
+  return { title: project.band.subtitle ? `${project.band.title}: ${project.band.subtitle}` : project.band.title, description: project.summary }
 }
 
 export default async function CaseStudyPage({ params }: PageProps) {
@@ -28,116 +35,121 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const project = getProject(slug)
   if (!project) notFound()
 
-  // `projects` is newest first, so "next" along the journey is one step further back in time.
+  // `projects` is newest first, so "earlier" is one step further along the journey.
   const index = projects.findIndex((p) => p.slug === project.slug)
   const newer = projects[index - 1]
   const older = projects[index + 1]
-  const stopNumber = String(index + 1).padStart(2, '0')
 
-  const details = [
-    { label: 'Role', value: project.role },
-    { label: 'Timeline', value: project.timeline },
-    project.tools ? { label: 'Tools', value: project.tools.join(', ') } : null,
-    { label: 'Skills', value: project.skills.join(', ') },
-  ].filter((d): d is { label: string; value: string } => d !== null)
+  const details: { label: string; values: string[] }[] = [
+    { label: 'Time Frame', values: [project.timeline] },
+    { label: 'Role', values: [project.role] },
+    { label: 'Skills', values: project.skills },
+    ...(project.tools ? [{ label: 'Tools', values: project.tools }] : []),
+  ]
 
   return (
     <>
       <SiteHeader />
       <main>
-        <article aria-labelledby="case-title" className="site-container pt-10 md:pt-14">
-          <Link
-            href="/#journey"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft className="size-4" aria-hidden="true" />
-            Back to the journey
-          </Link>
-
-          <header className="mt-10">
-            <p className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
-              <span className="text-accent">{stopNumber}</span>
-              <span aria-hidden="true">{' / '}</span>
-              {project.org}
-              <span aria-hidden="true">{' / '}</span>
-              {project.stamp}
-            </p>
-            <h1
-              id="case-title"
-              className="mt-4 max-w-5xl text-5xl font-serif leading-[0.95] font-normal tracking-tight text-balance md:text-7xl xl:text-8xl"
+        <article aria-labelledby="case-title">
+          {/* Header band: big title, then overview beside Time Frame / Role / Skills / Tools */}
+          <header className="site-container pt-6">
+            <div
+              className={`rounded-[3rem] px-6 pt-8 pb-10 text-[#f7f3ec] sm:px-10 md:px-14 md:pt-10 md:pb-14 ${bandColors[project.cover.tone]}`}
             >
-              {project.title}
-            </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-pretty text-foreground/80 md:text-xl">
-              {project.summary}
-            </p>
-            {project.draftNote ? (
-              <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-medium tracking-wider text-accent uppercase">
-                {project.draftNote}
-              </p>
-            ) : null}
+              <Link
+                href="/#journey"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/20"
+              >
+                <ArrowLeft className="size-4" aria-hidden="true" />
+                Back to the journey
+              </Link>
+
+              <h1 id="case-title" className="mt-12 md:mt-20">
+                <span className="block font-serif text-6xl leading-[0.95] tracking-tight text-balance md:text-8xl xl:text-9xl">
+                  {project.band.title}
+                </span>
+                {project.band.subtitle ? (
+                  <span className="mt-3 block font-serif text-3xl leading-tight text-balance text-[#f7f3ec]/85 italic md:text-5xl">
+                    {project.band.subtitle}
+                  </span>
+                ) : null}
+              </h1>
+
+              {project.draftNote ? (
+                <p className="mt-6 inline-block rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium">
+                  {project.draftNote}
+                </p>
+              ) : null}
+
+              <div className="mt-12 grid gap-10 rounded-[2.25rem] bg-white/[0.07] p-6 sm:p-8 md:mt-16 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16 lg:p-10">
+                <div>
+                  <h2 className="font-serif text-3xl md:text-4xl">Overview</h2>
+                  <p className="mt-4 text-lg leading-relaxed text-pretty text-[#f7f3ec]/85 [&_strong]:text-[#f7f3ec]">
+                    <Rich text={project.overview} />
+                  </p>
+                </div>
+                <dl className="grid grid-cols-2 gap-x-6 gap-y-8">
+                  {details.map((d) => (
+                    <div key={d.label}>
+                      <dt className="text-xs font-medium tracking-[0.12em] text-[#f7f3ec]/65 uppercase">{d.label}</dt>
+                      {d.values.map((v) => (
+                        <dd key={v} className="mt-1.5 leading-snug">
+                          {v}
+                        </dd>
+                      ))}
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
           </header>
 
-          <ProjectCover
-            project={project}
-            className="mt-12 aspect-[16/9] md:aspect-[21/9]"
-            sizes="(min-width: 1440px) 1280px, 100vw"
-          />
-
-          <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] lg:gap-20">
-            <aside className="lg:sticky lg:top-24 lg:self-start">
-              <dl className="grid gap-6 rounded-[2rem] bg-card p-7 sm:grid-cols-2 lg:grid-cols-1">
-                {details.map((d) => (
-                  <div key={d.label}>
-                    <dt className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">{d.label}</dt>
-                    <dd className="mt-2 text-sm leading-relaxed">{d.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </aside>
-
-            <div className="max-w-3xl pb-8">
+          {/* Body: one readable column with the Framer-style section headings */}
+          <div className="site-container">
+            <div className="mx-auto max-w-4xl py-16 md:py-24">
               {project.sections.map((section) => (
-                <section key={section.heading} className="mt-16 first:mt-0">
-                  <h2 className="font-serif text-4xl font-normal tracking-tight md:text-5xl">{section.heading}</h2>
-                  <div className="mt-6 space-y-6">
+                <section key={section.heading} className="mt-20 first:mt-0">
+                  <h2 className="font-serif text-4xl tracking-tight text-balance underline decoration-accent/40 decoration-2 underline-offset-[0.25em] md:text-5xl">
+                    {section.heading}
+                  </h2>
+                  <div className="mt-8 space-y-8">
                     {section.blocks.map((block, i) => (
                       <CaseStudyBlock key={i} block={block} />
                     ))}
                   </div>
                 </section>
               ))}
-            </div>
-          </div>
 
-          <nav aria-label="More projects" className="mt-16 grid gap-4 sm:grid-cols-2">
-            {newer ? (
-              <Link
-                href={`/work/${newer.slug}`}
-                className="group rounded-[2rem] bg-card p-7 transition-colors hover:bg-muted"
-              >
-                <span className="flex items-center gap-1.5 text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
-                  <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
-                  Newer · {newer.stamp}
-                </span>
-                <span className="mt-2 block font-serif text-3xl font-normal tracking-tight">{newer.title}</span>
-              </Link>
-            ) : (
-              <span className="hidden sm:block" />
-            )}
-            {older ? (
-              <Link
-                href={`/work/${older.slug}`}
-                className="group rounded-[2rem] bg-card p-7 text-right transition-colors hover:bg-muted"
-              >
-                <span className="flex items-center justify-end gap-1.5 text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
-                  Earlier · {older.stamp}
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-                </span>
-                <span className="mt-2 block font-serif text-3xl font-normal tracking-tight">{older.title}</span>
-              </Link>
-            ) : null}
-          </nav>
+              <p className="mt-24 text-center font-serif text-2xl text-muted-foreground">— Divya Menon —</p>
+            </div>
+
+            <nav aria-label="More projects" className="grid gap-4 sm:grid-cols-2">
+              {newer ? (
+                <Link href={`/work/${newer.slug}`} className="group rounded-[2rem] bg-card p-7 transition-colors hover:bg-muted">
+                  <span className="flex items-center gap-1.5 text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
+                    <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
+                    Newer · {newer.stamp}
+                  </span>
+                  <span className="mt-2 block font-serif text-3xl tracking-tight">{newer.title}</span>
+                </Link>
+              ) : (
+                <span className="hidden sm:block" />
+              )}
+              {older ? (
+                <Link
+                  href={`/work/${older.slug}`}
+                  className="group rounded-[2rem] bg-card p-7 text-right transition-colors hover:bg-muted"
+                >
+                  <span className="flex items-center justify-end gap-1.5 text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
+                    Earlier · {older.stamp}
+                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                  </span>
+                  <span className="mt-2 block font-serif text-3xl tracking-tight">{older.title}</span>
+                </Link>
+              ) : null}
+            </nav>
+          </div>
         </article>
       </main>
       <SiteFooter />

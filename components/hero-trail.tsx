@@ -9,9 +9,9 @@ type HeroTrailProps = {
   label: string
 }
 
-// Starts under the hero buttons (x = 50), loops once, then lands on the
-// first project's image column (x = 25), matching the journey's connectors.
-const path = 'M 50 0 C 50 22, 82 20, 76 46 C 72 64, 50 66, 52 50 C 54 34, 74 58, 54 76 C 42 86, 25 84, 25 100'
+// Starts under the left-aligned hero buttons (x = 4), swings out and loops once,
+// then lands on the first project's image column (x = 25), matching the journey's connectors.
+const path = 'M 4 0 C 4 26, 40 12, 60 34 C 74 50, 66 68, 52 62 C 40 56, 48 40, 60 50 C 72 60, 40 86, 25 100'
 
 export function HeroTrail({ label }: HeroTrailProps) {
   const { ref, inView } = useInView<HTMLDivElement>(0.2)
@@ -47,7 +47,7 @@ export function HeroTrail({ label }: HeroTrailProps) {
       </svg>
 
       {/* Start marker */}
-      <span className="absolute top-0 left-1/2 flex size-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent ring-4 ring-accent/15" />
+      <span className="absolute top-0 left-[4%] flex size-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent ring-4 ring-accent/15" />
 
       {/* Arrival marker + date of the first stop */}
       <span
