@@ -61,16 +61,22 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
           {project.timeline}
         </p>
         <p className="mt-5 leading-relaxed text-pretty text-foreground/80 md:text-lg">{project.summary}</p>
-        <ul className="mt-5 flex flex-wrap gap-2" aria-label="Focus areas">
-          {project.tags.map((tag) => (
-            <li
-              key={tag}
-              className="rounded-full bg-card px-3.5 py-1.5 text-xs font-medium text-foreground/75"
-            >
-              {tag}
-            </li>
-          ))}
-        </ul>
+        <dl className="mt-6 space-y-2 border-l-2 border-accent/30 pl-4 text-sm leading-relaxed">
+          <div className="flex gap-3">
+            <dt className="w-12 shrink-0 pt-px text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
+              Skills
+            </dt>
+            <dd className="text-foreground/80">{project.skills.join(' · ')}</dd>
+          </div>
+          {project.tools ? (
+            <div className="flex gap-3">
+              <dt className="w-12 shrink-0 pt-px text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
+                Tools
+              </dt>
+              <dd className="text-foreground/80">{project.tools.join(' · ')}</dd>
+            </div>
+          ) : null}
+        </dl>
         <Link
           href={href}
           className="group mt-7 inline-flex items-center gap-1.5 font-medium text-accent hover:text-foreground"
