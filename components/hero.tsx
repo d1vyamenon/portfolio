@@ -17,10 +17,10 @@ export function Hero() {
       </p>
       <h1
         id="hero-title"
-        className="mt-6 text-6xl leading-[0.95] font-semibold tracking-tighter text-balance sm:text-7xl md:text-8xl xl:text-9xl"
+        className="mt-6 text-6xl font-serif leading-[0.95] font-normal tracking-tight text-balance sm:text-7xl md:text-8xl xl:text-9xl"
       >
-        {'Hi, I’m Divya'}
-        <span className="text-accent">.</span>
+        {'Hi, I’m '}
+        <span className="text-accent italic">Divya</span>.
       </h1>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-end lg:gap-20">
@@ -35,7 +35,7 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#journey"
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+              className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
             >
               View my work
               <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden="true" />

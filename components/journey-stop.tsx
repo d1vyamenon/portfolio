@@ -51,7 +51,7 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
         </p>
         <h3
           id={`${project.slug}-title`}
-          className="mt-3 text-4xl font-semibold tracking-tight text-balance md:text-5xl"
+          className="mt-3 font-serif text-5xl font-normal tracking-tight text-balance md:text-6xl"
         >
           {project.title}
         </h3>

@@ -70,9 +70,9 @@ export default function AboutPage() {
             <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">About me</p>
             <h1
               id="about-title"
-              className="mt-6 text-5xl leading-[0.95] font-semibold tracking-tighter text-balance md:text-7xl"
+              className="mt-6 text-5xl font-serif leading-[0.95] font-normal tracking-tight text-balance md:text-7xl"
             >
-              Cognitive science, applied<span className="text-accent">.</span>
+              Cognitive science, <span className="text-accent italic">applied</span>.
             </h1>
           </div>
           <div className="space-y-4 text-lg leading-relaxed text-pretty text-foreground/80 lg:pt-12">
@@ -90,7 +90,7 @@ export default function AboutPage() {
               href={site.resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8! inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+              className="mt-8! inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
             >
               <Download className="size-4" aria-hidden="true" />
               Download my résumé
@@ -154,7 +154,7 @@ export default function AboutPage() {
 
         <section aria-labelledby="offline-title" className="mt-24 grid gap-6 border-t border-border pt-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] lg:gap-20">
           <SectionLabel id="offline-title">When I’m not designing</SectionLabel>
-          <p className="max-w-2xl text-2xl leading-snug font-medium tracking-tight text-pretty">
+          <p className="max-w-2xl font-serif text-3xl leading-snug font-normal tracking-tight text-pretty md:text-4xl">
             You’ll find me bouldering, crocheting, cooking recipes I found on social media, or catching up on a show.
           </p>
         </section>

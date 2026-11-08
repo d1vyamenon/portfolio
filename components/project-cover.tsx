@@ -12,12 +12,12 @@ const icons: Record<CoverIcon, typeof Smartphone> = {
   accessibility: Accessibility,
 }
 
-// Each tone is a dark tinted surface plus a muted line color for the grid and rings.
+// Each tone is a soft paper-colored surface plus a slightly deeper line color for the grid and rings.
 const tones: Record<CoverTone, { bg: string; line: string; glow: string }> = {
-  ember: { bg: 'bg-[#1f1612]', line: 'text-[#5a3a2c]', glow: 'from-[#ff6a3d]/25' },
-  slate: { bg: 'bg-[#121a1e]', line: 'text-[#2c4550]', glow: 'from-[#5e9fb8]/25' },
-  moss: { bg: 'bg-[#151a13]', line: 'text-[#334229]', glow: 'from-[#8fb36a]/20' },
-  plum: { bg: 'bg-[#1b141d]', line: 'text-[#463048]', glow: 'from-[#b07aa8]/25' },
+  ember: { bg: 'bg-[#ebdad5]', line: 'text-[#cfb2a9]', glow: 'from-[#6e1f2c]/10' },
+  slate: { bg: 'bg-[#e3e0da]', line: 'text-[#c6bfb5]', glow: 'from-[#ffffff]/50' },
+  moss: { bg: 'bg-[#dfe3d7]', line: 'text-[#c1c9b4]', glow: 'from-[#ffffff]/50' },
+  plum: { bg: 'bg-[#ebe1cf]', line: 'text-[#d3c4a9]', glow: 'from-[#ffffff]/50' },
 }
 
 type ProjectCoverProps = {
@@ -49,7 +49,7 @@ export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
       role="img"
       aria-label={`${project.title} cover`}
       className={cn(
-        'relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] border border-white/[0.06]',
+        'relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] border border-foreground/[0.06]',
         tone.bg,
         className,
       )}
@@ -65,7 +65,7 @@ export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
         <circle cx="60" cy="42" r="24" stroke="currentColor" strokeWidth="0.5" />
         <circle cx="60" cy="42" r="34" stroke="currentColor" strokeWidth="0.35" strokeDasharray="1 2" />
       </svg>
-      <div className="absolute top-[47%] left-1/2 flex aspect-square h-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[26%] border border-white/10 bg-background/70 backdrop-blur-sm">
+      <div className="absolute top-[47%] left-1/2 flex aspect-square h-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[26%] border border-foreground/10 bg-background/85 shadow-sm">
         <Icon className="size-[44%] text-accent" strokeWidth={1.5} aria-hidden="true" />
       </div>
       <div className="absolute inset-x-[6%] bottom-[7%] flex items-end justify-between gap-4 font-mono text-[clamp(0.6rem,1.2vw,0.75rem)] tracking-widest text-foreground/60 uppercase">

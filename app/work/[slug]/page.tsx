@@ -64,7 +64,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             </p>
             <h1
               id="case-title"
-              className="mt-4 max-w-5xl text-5xl leading-[0.95] font-semibold tracking-tighter text-balance md:text-7xl xl:text-8xl"
+              className="mt-4 max-w-5xl text-5xl font-serif leading-[0.95] font-normal tracking-tight text-balance md:text-7xl xl:text-8xl"
             >
               {project.title}
             </h1>
@@ -99,7 +99,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             <div className="max-w-3xl pb-8">
               {project.sections.map((section) => (
                 <section key={section.heading} className="mt-16 first:mt-0">
-                  <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">{section.heading}</h2>
+                  <h2 className="font-serif text-4xl font-normal tracking-tight md:text-5xl">{section.heading}</h2>
                   <div className="mt-6 space-y-6">
                     {section.blocks.map((block, i) => (
                       <CaseStudyBlock key={i} block={block} />
@@ -120,7 +120,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                   <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
                   Newer · {newer.stamp}
                 </span>
-                <span className="mt-2 block text-2xl font-semibold tracking-tight">{newer.title}</span>
+                <span className="mt-2 block font-serif text-3xl font-normal tracking-tight">{newer.title}</span>
               </Link>
             ) : (
               <span className="hidden sm:block" />
@@ -134,7 +134,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                   Earlier · {older.stamp}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                 </span>
-                <span className="mt-2 block text-2xl font-semibold tracking-tight">{older.title}</span>
+                <span className="mt-2 block font-serif text-3xl font-normal tracking-tight">{older.title}</span>
               </Link>
             ) : null}
           </nav>

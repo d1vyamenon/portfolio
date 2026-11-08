@@ -42,7 +42,7 @@ export function CaseStudyBlock({ block }: { block: Block }) {
               <div key={stat.label} className="rounded-2xl border border-border bg-card p-6">
                 <dt className="sr-only">{stat.label}</dt>
                 <dd>
-                  <span className="block text-5xl font-semibold tracking-tighter text-accent">{stat.value}</span>
+                  <span className="block font-serif text-6xl font-normal tracking-tight text-accent">{stat.value}</span>
                   <span className="mt-3 block text-sm leading-snug text-pretty text-muted-foreground">
                     {stat.label}
                   </span>
