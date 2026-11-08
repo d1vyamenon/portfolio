@@ -61,19 +61,16 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
           {project.timeline}
         </p>
         <p className="mt-5 leading-relaxed text-pretty text-foreground/80 md:text-lg">{project.summary}</p>
-        <dl className="mt-6 space-y-2 border-l-2 border-accent/30 pl-4 text-sm leading-relaxed">
-          <div className="flex gap-3">
-            <dt className="w-12 shrink-0 pt-px text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
-              Skills
-            </dt>
-            <dd className="text-foreground/80">{project.skills.join(' · ')}</dd>
+        {/* Skills and tools: label on top, values underneath, side by side when there's room */}
+        <dl className={cn('mt-6 grid gap-x-8 gap-y-4', project.tools && 'sm:grid-cols-2')}>
+          <div>
+            <dt className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">Skills</dt>
+            <dd className="mt-1.5 leading-relaxed text-pretty text-foreground/85">{project.skills.join(', ')}</dd>
           </div>
           {project.tools ? (
-            <div className="flex gap-3">
-              <dt className="w-12 shrink-0 pt-px text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
-                Tools
-              </dt>
-              <dd className="text-foreground/80">{project.tools.join(' · ')}</dd>
+            <div>
+              <dt className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">Tools</dt>
+              <dd className="mt-1.5 leading-relaxed text-pretty text-foreground/85">{project.tools.join(', ')}</dd>
             </div>
           ) : null}
         </dl>
