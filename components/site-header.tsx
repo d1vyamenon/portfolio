@@ -1,29 +1,38 @@
+import Link from 'next/link'
+import { site } from '@/lib/site'
+
 const links = [
-  { href: '#journey', label: 'Work' },
+  { href: '/#journey', label: 'Work' },
+  { href: '/about', label: 'About' },
+  { href: site.resume, label: 'Résumé', external: true },
   { href: '#contact', label: 'Contact' },
 ]
 
 export function SiteHeader() {
   return (
-    <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
-      <a href="/" className="text-lg font-semibold tracking-tight">
-        <span aria-hidden="true" className="mr-2 inline-block size-2.5 rounded-full bg-accent" />
-        Divya
-      </a>
-      <nav aria-label="Main">
-        <ul className="flex items-center gap-6 text-sm font-medium">
-          {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="underline-offset-4 hover:text-primary hover:underline hover:decoration-2"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/75 backdrop-blur-md">
+      <div className="site-container flex h-16 items-center justify-between gap-4">
+        <Link href="/" className="flex shrink-0 items-center gap-2 font-semibold tracking-tight">
+          <span aria-hidden="true" className="inline-block size-2 rounded-full bg-accent" />
+          <span className="sm:hidden">{site.shortName}</span>
+          <span className="hidden sm:inline">{site.name}</span>
+        </Link>
+        <nav aria-label="Main">
+          <ul className="flex items-center gap-4 text-sm text-muted-foreground sm:gap-7">
+            {links.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className="transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </header>
   )
 }

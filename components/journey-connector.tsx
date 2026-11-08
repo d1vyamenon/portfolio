@@ -44,8 +44,8 @@ export function JourneyConnector({ from, to, label, className }: JourneyConnecto
           fill="none"
           mask={`url(#${maskId})`}
           vectorEffect="non-scaling-stroke"
-          className="stroke-accent"
-          strokeWidth={2.5}
+          className="stroke-muted-foreground/60"
+          strokeWidth={2}
           strokeLinecap="round"
           strokeDasharray="1 8"
         />
@@ -53,17 +53,17 @@ export function JourneyConnector({ from, to, label, className }: JourneyConnecto
       <span
         style={markerStyle}
         className={cn(
-          'absolute top-1/2 flex size-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-primary bg-background transition-all delay-500 duration-500 motion-reduce:transition-none',
+          'absolute top-1/2 flex size-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-accent bg-background transition-all delay-500 duration-500 motion-reduce:transition-none',
           inView ? 'scale-100 opacity-100' : 'scale-50 opacity-0',
         )}
       >
-        <span className="size-2 rounded-full bg-primary" />
+        <span className="size-2 rounded-full bg-accent" />
       </span>
       {label ? (
         <span
           style={markerStyle}
           className={cn(
-            'absolute top-1/2 ml-7 -translate-y-1/2 font-serif text-lg whitespace-nowrap text-muted-foreground italic transition-opacity delay-700 duration-500 motion-reduce:transition-none',
+            'absolute top-1/2 ml-6 -translate-y-1/2 rounded-full border border-border bg-card px-3 py-1 font-mono text-[0.65rem] tracking-wider whitespace-nowrap md:text-[0.7rem] md:tracking-widest text-muted-foreground uppercase transition-opacity delay-700 duration-500 motion-reduce:transition-none',
             inView ? 'opacity-100' : 'opacity-0',
           )}
         >

@@ -1,21 +1,18 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Geist, Instrument_Serif } from 'next/font/google'
+import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
-const instrumentSerif = Instrument_Serif({
-  subsets: ['latin'],
-  weight: '400',
-  style: ['normal', 'italic'],
-  variable: '--font-instrument-serif',
-})
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
 
 export const metadata: Metadata = {
-  title: 'Divya — UX Designer',
+  title: {
+    default: 'Divya Menon — UX Researcher & Designer',
+    template: '%s — Divya Menon',
+  },
   description:
-    'UX portfolio of Divya, a designer who maps the journey between people and products. Follow the path through selected case studies.',
-  generator: 'v0.app',
+    'UX research and design portfolio of Divya Menon, a Carnegie Mellon MHCI student with a background in cognitive science. Follow the path through her case studies.',
   icons: {
     icon: [
       {
@@ -36,8 +33,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light',
-  themeColor: '#f7f1e6',
+  colorScheme: 'dark',
+  themeColor: '#0f0f0e',
 }
 
 export default function RootLayout({
@@ -46,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${instrumentSerif.variable} light bg-background`}>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

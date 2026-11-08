@@ -1,37 +1,49 @@
-import { Mail } from 'lucide-react'
+import { ArrowUpRight, Mail } from 'lucide-react'
+import { site } from '@/lib/site'
 
 export function SiteFooter() {
   return (
-    <footer id="contact" className="mx-auto max-w-5xl scroll-mt-8 px-6 pb-12 text-center">
-      <h2 className="text-4xl font-semibold tracking-tight text-balance md:text-5xl">Contact Heading</h2>
-      <p className="mx-auto mt-4 max-w-md leading-relaxed text-pretty text-muted-foreground">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
-      </p>
-      <a
-        href="mailto:email@example.com"
-        className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
-      >
-        <Mail className="size-4" aria-hidden="true" />
-        email@example.com
-      </a>
-      <ul className="mt-8 flex justify-center gap-6 text-sm font-medium" aria-label="Elsewhere">
-        <li>
-          <a href="https://www.linkedin.com" className="underline-offset-4 hover:text-primary hover:underline">
+    <footer id="contact" className="site-container scroll-mt-20 pt-16 pb-10">
+      <div className="rounded-[2rem] border border-border bg-card px-6 py-14 md:px-14 md:py-20">
+        <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">Next stop</p>
+        <h2 className="mt-4 max-w-3xl text-5xl leading-[0.95] font-semibold tracking-tighter text-balance md:text-7xl">
+          Let’s chat<span className="text-accent">.</span>
+        </h2>
+        <p className="mt-5 max-w-xl leading-relaxed text-pretty text-muted-foreground md:text-lg">
+          I’m looking for my place in UX research and product design. I’d love to hear about you and your team.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <a
+            href={`mailto:${site.email}`}
+            className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-medium text-accent-foreground transition-colors hover:bg-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+          >
+            <Mail className="size-4" aria-hidden="true" />
+            {site.email}
+          </a>
+          <a
+            href={site.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-3 font-medium transition-colors hover:border-foreground/40"
+          >
             LinkedIn
+            <ArrowUpRight className="size-4" aria-hidden="true" />
           </a>
-        </li>
-        <li>
-          <a href="https://dribbble.com" className="underline-offset-4 hover:text-primary hover:underline">
-            Dribbble
-          </a>
-        </li>
-        <li>
-          <a href="#" className="underline-offset-4 hover:text-primary hover:underline">
+          <a
+            href={site.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-3 font-medium transition-colors hover:border-foreground/40"
+          >
             Résumé
+            <ArrowUpRight className="size-4" aria-hidden="true" />
           </a>
-        </li>
-      </ul>
-      <p className="mt-16 text-xs text-muted-foreground">{`© ${new Date().getFullYear()} Divya. Designed with care.`}</p>
+        </div>
+      </div>
+      <div className="mt-8 flex flex-wrap justify-between gap-2 font-mono text-xs tracking-wider text-muted-foreground uppercase">
+        <p>{`© ${new Date().getFullYear()} ${site.name}`}</p>
+        <p>Pittsburgh, PA</p>
+      </div>
     </footer>
   )
 }

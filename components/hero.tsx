@@ -1,44 +1,72 @@
+import Link from 'next/link'
 import { ArrowDown } from 'lucide-react'
+import { projects } from '@/lib/projects'
+import { site } from '@/lib/site'
 
 export function Hero() {
+  const current = projects[0]
+
   return (
-    <section aria-labelledby="hero-title" className="mx-auto max-w-5xl px-6 pt-16 md:pt-24">
-      <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
-        <p className="font-serif text-xl text-muted-foreground italic">UX Designer</p>
-        <h1 id="hero-title" className="mt-3 font-serif text-6xl leading-[1] tracking-tight text-balance md:text-8xl">
-          {'Hello! I\u2019m '}
-          <span className="relative inline-block italic">
-            Divya.
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 200 20"
-              preserveAspectRatio="none"
-              className="absolute -bottom-2 left-0 h-3 w-full text-accent"
+    <section aria-labelledby="hero-title" className="site-container pt-14 pb-8 md:pt-24 lg:pt-32">
+      <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+        {site.title}
+        <span aria-hidden="true" className="mx-2 text-accent">
+          /
+        </span>
+        MHCI @ Carnegie Mellon
+      </p>
+      <h1
+        id="hero-title"
+        className="mt-6 text-6xl leading-[0.95] font-semibold tracking-tighter text-balance sm:text-7xl md:text-8xl xl:text-9xl"
+      >
+        {'Hi, I’m Divya'}
+        <span className="text-accent">.</span>
+      </h1>
+
+      <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-end lg:gap-20">
+        <div>
+          <p className="max-w-3xl text-2xl leading-snug font-medium tracking-tight text-balance md:text-3xl">
+            A cognitive scientist turned UX researcher, designing around how people actually think.
+          </p>
+          <p className="mt-5 max-w-2xl leading-relaxed text-pretty text-muted-foreground md:text-lg">
+            I’ve run usability tests for an industrial AI platform, interviewed energy executives about AI adoption, and
+            audited an online learning tool for accessibility. Scroll down to follow the journey, newest stop first.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="#journey"
+              className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
             >
-              <path
-                d="M2 14 C 50 4, 110 4, 198 10"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="5"
-                strokeLinecap="round"
-              />
-            </svg>
-          </span>
-        </h1>
-        <p className="mt-8 text-xl leading-snug text-balance md:text-2xl">
-          Tagline goes here, lorem ipsum dolor sit amet consectetur.
-        </p>
-        <p className="mx-auto mt-4 max-w-xl leading-relaxed text-pretty text-muted-foreground">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-        </p>
-        <a
-          href="#journey"
-          className="group mt-8 inline-flex items-center gap-2 rounded-full border border-primary/80 px-5 py-2.5 text-sm font-medium transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+              View my work
+              <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
+            </a>
+            <Link
+              href="/about"
+              className="inline-flex items-center rounded-full border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-foreground/40"
+            >
+              About me
+            </Link>
+          </div>
+        </div>
+
+        <Link
+          href={`/work/${current.slug}`}
+          className="group block rounded-3xl border border-border bg-card p-6 transition-colors hover:border-accent/60"
         >
-          View my journey
-          <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
-        </a>
+          <p className="flex items-center gap-2 font-mono text-xs tracking-widest text-muted-foreground uppercase">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60 motion-reduce:hidden" />
+              <span className="relative inline-flex size-2 rounded-full bg-accent" />
+            </span>
+            Currently
+          </p>
+          <p className="mt-3 text-lg font-medium">{current.role}</p>
+          <p className="text-muted-foreground">
+            {current.org}
+            <span aria-hidden="true">{' · '}</span>
+            {current.stamp}
+          </p>
+        </Link>
       </div>
     </section>
   )
