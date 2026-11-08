@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowDown, Camera } from 'lucide-react'
 import { HeroTrail } from '@/components/hero-trail'
-import { projects } from '@/lib/projects'
 import { site } from '@/lib/site'
 
 // A soft, hand-drawn-feeling blob instead of a hard rectangle.
@@ -10,7 +9,8 @@ const blob = 'rounded-[46%_54%_42%_58%/52%_44%_56%_48%]'
 
 function HeroPhoto() {
   return (
-    <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-md">
+    // Shown above the text on small screens so the trail can run straight down from the button.
+    <div className="relative order-first mx-auto w-full max-w-[16rem] sm:max-w-xs lg:order-none lg:max-w-md lg:self-center">
       {/* Offset outline behind the photo for a bit of depth */}
       <div aria-hidden="true" className={`absolute inset-0 translate-x-3 translate-y-3 border-2 border-accent/30 ${blob}`} />
       {site.photo ? (
@@ -38,7 +38,7 @@ function HeroPhoto() {
 export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="site-container pt-16 md:pt-24">
-      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-16">
+      <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-16">
         <div>
           <h1
             id="hero-title"
@@ -56,6 +56,7 @@ export function Hero() {
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
+              id="view-journey"
               href="#journey"
               className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/85 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
             >
@@ -74,8 +75,8 @@ export function Hero() {
         <HeroPhoto />
       </div>
 
-      <div className="mt-12 md:mt-14">
-        <HeroTrail label={projects[0].stamp} />
+      <div className="mt-10">
+        <HeroTrail anchorId="view-journey" />
       </div>
     </section>
   )

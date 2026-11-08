@@ -68,9 +68,8 @@ export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
       <div className="absolute top-[47%] left-1/2 flex aspect-square h-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[26%] border border-foreground/10 bg-background/85 shadow-sm">
         <Icon className="size-[44%] text-accent" strokeWidth={1.5} aria-hidden="true" />
       </div>
-      <div className="absolute inset-x-[6%] bottom-[7%] flex items-end justify-between gap-4 text-[clamp(0.6rem,1.2vw,0.75rem)] font-medium tracking-[0.12em] text-foreground/60 uppercase">
-        <span>{project.org}</span>
-        <span>{project.stamp}</span>
+      <div className="absolute inset-x-[6%] bottom-[7%] text-[clamp(0.6rem,1.2vw,0.75rem)] font-medium tracking-[0.12em] text-foreground/60 uppercase">
+        {project.org}
       </div>
     </div>
   )

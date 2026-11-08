@@ -11,19 +11,14 @@ export function Journey() {
       <h2 id="journey-title" className="sr-only">
         Selected projects, most recent first
       </h2>
-      {/* The hero's trail leads into the first stop; each connector after it is
-          stamped with the dates of the stop it leads into. */}
+      {/* The hero's trail leads into the first stop; connectors link each stop to the next. */}
       {projects.map((project, index) => (
         <Fragment key={project.slug}>
           <JourneyStop project={project} index={index} />
           {index < projects.length - 1 ? (
-            <JourneyConnector
-              from={imageColumnX(index)}
-              to={imageColumnX(index + 1)}
-              label={projects[index + 1].stamp}
-            />
+            <JourneyConnector from={imageColumnX(index)} to={imageColumnX(index + 1)} />
           ) : (
-            <JourneyConnector from={imageColumnX(index)} to={50} label="Where it started" />
+            <JourneyConnector from={imageColumnX(index)} to={50} />
           )}
         </Fragment>
       ))}

@@ -43,8 +43,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const details: { label: string; values: string[] }[] = [
     { label: 'Time Frame', values: [project.timeline] },
     { label: 'Role', values: [project.role] },
-    { label: 'Skills', values: project.skills },
-    ...(project.tools ? [{ label: 'Tools', values: project.tools }] : []),
+    ...(project.tools ? [{ label: 'Tools', values: [project.tools.join(', ')] }] : []),
   ]
 
   return (
@@ -89,7 +88,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                     <Rich text={project.overview} />
                   </p>
                 </div>
-                <dl className="grid grid-cols-2 gap-x-6 gap-y-8">
+                <dl className="grid grid-cols-2 content-start gap-x-6 gap-y-8">
                   {details.map((d) => (
                     <div key={d.label}>
                       <dt className="text-xs font-medium tracking-[0.12em] text-[#f7f3ec]/65 uppercase">{d.label}</dt>
@@ -100,6 +99,22 @@ export default async function CaseStudyPage({ params }: PageProps) {
                       ))}
                     </div>
                   ))}
+                  {/* Skills as tags across the full width */}
+                  <div className="col-span-2">
+                    <dt className="text-xs font-medium tracking-[0.12em] text-[#f7f3ec]/65 uppercase">Skills</dt>
+                    <dd className="mt-3">
+                      <ul className="flex flex-wrap gap-2" aria-label="Skills used">
+                        {project.skills.map((skill) => (
+                          <li
+                            key={skill}
+                            className="rounded-full bg-[#f7f3ec] px-4 py-1.5 text-sm font-medium text-[#24181a]"
+                          >
+                            {skill}
+                          </li>
+                        ))}
+                      </ul>
+                    </dd>
+                  </div>
                 </dl>
               </div>
             </div>
@@ -129,7 +144,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 <Link href={`/work/${newer.slug}`} className="group rounded-[2rem] bg-card p-7 transition-colors hover:bg-muted">
                   <span className="flex items-center gap-1.5 text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
                     <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
-                    Newer · {newer.stamp}
+                    Newer project
                   </span>
                   <span className="mt-2 block font-serif text-3xl tracking-tight">{newer.title}</span>
                 </Link>
@@ -142,7 +157,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                   className="group rounded-[2rem] bg-card p-7 text-right transition-colors hover:bg-muted"
                 >
                   <span className="flex items-center justify-end gap-1.5 text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
-                    Earlier · {older.stamp}
+                    Earlier project
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                   </span>
                   <span className="mt-2 block font-serif text-3xl tracking-tight">{older.title}</span>
