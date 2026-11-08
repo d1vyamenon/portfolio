@@ -30,7 +30,7 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
       <Link
         href={href}
         className={cn(
-          'group relative block w-full rounded-[1.75rem] focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
+          'group relative block w-full rounded-[2.75rem] focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
           !imageFirst && 'md:order-2',
         )}
         tabIndex={-1}
@@ -44,7 +44,7 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
       </Link>
 
       <div className={cn('max-w-xl', imageFirst ? 'md:justify-self-start' : 'md:order-1 md:justify-self-end')}>
-        <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+        <p className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
           <span className="text-accent">{stopNumber}</span>
           <span aria-hidden="true">{' / '}</span>
           {project.org}
@@ -65,7 +65,7 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
           {project.tags.map((tag) => (
             <li
               key={tag}
-              className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground/75"
+              className="rounded-full bg-card px-3.5 py-1.5 text-xs font-medium text-foreground/75"
             >
               {tag}
             </li>

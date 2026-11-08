@@ -55,7 +55,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </Link>
 
           <header className="mt-10">
-            <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+            <p className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
               <span className="text-accent">{stopNumber}</span>
               <span aria-hidden="true">{' / '}</span>
               {project.org}
@@ -72,7 +72,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               {project.summary}
             </p>
             {project.draftNote ? (
-              <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/50 bg-accent/10 px-3 py-1 font-mono text-xs tracking-wider text-accent uppercase">
+              <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-medium tracking-wider text-accent uppercase">
                 {project.draftNote}
               </p>
             ) : null}
@@ -86,10 +86,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
           <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] lg:gap-20">
             <aside className="lg:sticky lg:top-24 lg:self-start">
-              <dl className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+              <dl className="grid gap-6 rounded-[2rem] bg-card p-7 sm:grid-cols-2 lg:grid-cols-1">
                 {details.map((d) => (
-                  <div key={d.label} className="border-t border-border pt-4">
-                    <dt className="font-mono text-xs tracking-widest text-muted-foreground uppercase">{d.label}</dt>
+                  <div key={d.label}>
+                    <dt className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">{d.label}</dt>
                     <dd className="mt-2 text-sm leading-relaxed">{d.value}</dd>
                   </div>
                 ))}
@@ -110,13 +110,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
             </div>
           </div>
 
-          <nav aria-label="More projects" className="mt-16 grid gap-4 border-t border-border pt-10 sm:grid-cols-2">
+          <nav aria-label="More projects" className="mt-16 grid gap-4 sm:grid-cols-2">
             {newer ? (
               <Link
                 href={`/work/${newer.slug}`}
-                className="group rounded-3xl border border-border p-6 transition-colors hover:border-foreground/30"
+                className="group rounded-[2rem] bg-card p-7 transition-colors hover:bg-muted"
               >
-                <span className="flex items-center gap-1.5 font-mono text-xs tracking-widest text-muted-foreground uppercase">
+                <span className="flex items-center gap-1.5 text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
                   <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
                   Newer · {newer.stamp}
                 </span>
@@ -128,9 +128,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
             {older ? (
               <Link
                 href={`/work/${older.slug}`}
-                className="group rounded-3xl border border-border p-6 text-right transition-colors hover:border-foreground/30"
+                className="group rounded-[2rem] bg-card p-7 text-right transition-colors hover:bg-muted"
               >
-                <span className="flex items-center justify-end gap-1.5 font-mono text-xs tracking-widest text-muted-foreground uppercase">
+                <span className="flex items-center justify-end gap-1.5 text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
                   Earlier · {older.stamp}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                 </span>

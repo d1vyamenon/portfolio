@@ -1,15 +1,16 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google'
+import { DM_Sans, Fraunces } from 'next/font/google'
 import './globals.css'
 
-const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
-const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
-const instrumentSerif = Instrument_Serif({
+// DM Sans: a friendly, rounded sans for body text and labels.
+const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans' })
+// Fraunces: a soft, warm serif for headings ("SOFT" axis is turned up in globals.css).
+const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: '400',
   style: ['normal', 'italic'],
-  variable: '--font-instrument-serif',
+  axes: ['SOFT', 'opsz'],
+  variable: '--font-fraunces',
 })
 
 export const metadata: Metadata = {
@@ -49,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable} bg-background`}>
+    <html lang="en" className={`${dmSans.variable} ${fraunces.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

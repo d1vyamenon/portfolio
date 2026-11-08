@@ -54,7 +54,7 @@ const skills = [
 
 function SectionLabel({ id, children }: { id: string; children: React.ReactNode }) {
   return (
-    <h2 id={id} className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+    <h2 id={id} className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
       {children}
     </h2>
   )
@@ -67,7 +67,7 @@ export default function AboutPage() {
       <main className="site-container pt-14 pb-12 md:pt-24">
         <section aria-labelledby="about-title" className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-20">
           <div>
-            <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">About me</p>
+            <p className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">About me</p>
             <h1
               id="about-title"
               className="mt-6 text-5xl font-serif leading-[0.95] font-normal tracking-tight text-balance md:text-7xl"
@@ -101,14 +101,14 @@ export default function AboutPage() {
         <div className="mt-24 grid gap-16 lg:grid-cols-2 lg:gap-20">
           <section aria-labelledby="experience-title">
             <SectionLabel id="experience-title">Experience</SectionLabel>
-            <ol className="mt-6 divide-y divide-border border-y border-border">
+            <ol className="mt-6 space-y-3">
               {experience.map((job) => (
-                <li key={job.org} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-5">
+                <li key={job.org} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 rounded-[1.75rem] bg-card px-6 py-5">
                   <div>
                     <p className="text-lg font-semibold tracking-tight">{job.role}</p>
                     <p className="text-muted-foreground">{job.org}</p>
                   </div>
-                  <p className="font-mono text-xs tracking-wider text-muted-foreground uppercase">{job.when}</p>
+                  <p className="text-xs font-medium tracking-wider text-muted-foreground uppercase">{job.when}</p>
                 </li>
               ))}
             </ol>
@@ -116,12 +116,12 @@ export default function AboutPage() {
 
           <section aria-labelledby="education-title">
             <SectionLabel id="education-title">Education</SectionLabel>
-            <ul className="mt-6 divide-y divide-border border-y border-border">
+            <ul className="mt-6 space-y-3">
               {education.map((ed) => (
-                <li key={ed.school} className="py-5">
+                <li key={ed.school} className="rounded-[1.75rem] bg-card px-6 py-5">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
                     <p className="text-lg font-semibold tracking-tight">{ed.school}</p>
-                    <p className="font-mono text-xs tracking-wider text-muted-foreground uppercase">{ed.when}</p>
+                    <p className="text-xs font-medium tracking-wider text-muted-foreground uppercase">{ed.when}</p>
                   </div>
                   <p className="text-muted-foreground">{ed.degree}</p>
                   {ed.detail ? <p className="mt-2 text-sm leading-relaxed text-foreground/65">{ed.detail}</p> : null}
@@ -135,13 +135,13 @@ export default function AboutPage() {
           <SectionLabel id="skills-title">Skills & tools</SectionLabel>
           <div className="mt-6 grid gap-8 md:grid-cols-3">
             {skills.map((s) => (
-              <div key={s.group} className="rounded-3xl border border-border bg-card p-6">
+              <div key={s.group} className="rounded-[2rem] bg-card p-7">
                 <h3 className="font-semibold">{s.group}</h3>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {s.items.map((item) => (
                     <li
                       key={item}
-                      className="rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/75"
+                      className="rounded-full bg-background px-3.5 py-1.5 text-xs font-medium text-foreground/75"
                     >
                       {item}
                     </li>
@@ -152,7 +152,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section aria-labelledby="offline-title" className="mt-24 grid gap-6 border-t border-border pt-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] lg:gap-20">
+        <section aria-labelledby="offline-title" className="mt-24 grid gap-6 rounded-[2.5rem] bg-secondary p-8 md:p-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] lg:gap-20">
           <SectionLabel id="offline-title">When I’m not designing</SectionLabel>
           <p className="max-w-2xl font-serif text-3xl leading-snug font-normal tracking-tight text-pretty md:text-4xl">
             You’ll find me bouldering, crocheting, cooking recipes I found on social media, or catching up on a show.

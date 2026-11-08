@@ -63,7 +63,7 @@ export function JourneyConnector({ from, to, label, className }: JourneyConnecto
         <span
           style={markerStyle}
           className={cn(
-            'absolute top-1/2 ml-6 -translate-y-1/2 rounded-full border border-border bg-card px-3 py-1 font-mono text-[0.65rem] tracking-wider whitespace-nowrap md:text-[0.7rem] md:tracking-widest text-muted-foreground uppercase transition-opacity delay-700 duration-500 motion-reduce:transition-none',
+            'absolute top-1/2 ml-6 -translate-y-1/2 rounded-full bg-card px-3.5 py-1 text-[0.65rem] font-medium tracking-wider whitespace-nowrap md:text-[0.7rem]  text-muted-foreground uppercase transition-opacity delay-700 duration-500 motion-reduce:transition-none',
             inView ? 'opacity-100' : 'opacity-0',
           )}
         >

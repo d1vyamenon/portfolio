@@ -4,8 +4,8 @@ import { site } from '@/lib/site'
 export function SiteFooter() {
   return (
     <footer id="contact" className="site-container scroll-mt-20 pt-16 pb-10">
-      <div className="rounded-[2rem] bg-primary px-6 py-14 text-primary-foreground md:px-14 md:py-20">
-        <p className="font-mono text-xs tracking-widest text-primary-foreground/70 uppercase">Next stop</p>
+      <div className="rounded-[3rem] bg-primary px-6 py-14 text-primary-foreground md:px-14 md:py-20">
+        <p className="text-xs font-medium tracking-[0.12em] text-primary-foreground/70 uppercase">Next stop</p>
         <h2 className="mt-4 max-w-3xl font-serif text-6xl leading-[0.95] font-normal tracking-tight text-balance md:text-8xl">
           Let’s <span className="italic">chat.</span>
         </h2>
@@ -40,7 +40,7 @@ export function SiteFooter() {
           </a>
         </div>
       </div>
-      <div className="mt-8 flex flex-wrap justify-between gap-2 font-mono text-xs tracking-wider text-muted-foreground uppercase">
+      <div className="mt-8 flex flex-wrap justify-between gap-2 text-xs font-medium tracking-wider text-muted-foreground uppercase">
         <p>{`© ${new Date().getFullYear()} ${site.name}`}</p>
         <p>Pittsburgh, PA</p>
       </div>

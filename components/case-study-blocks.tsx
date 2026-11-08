@@ -19,10 +19,10 @@ export function CaseStudyBlock({ block }: { block: Block }) {
 
     case 'steps':
       return (
-        <ol className="divide-y divide-border border-y border-border">
+        <ol className="space-y-3">
           {block.items.map((step, i) => (
-            <li key={step.title} className="grid gap-1 py-5 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-4">
-              <span aria-hidden="true" className="font-mono text-sm text-accent">
+            <li key={step.title} className="grid gap-3 rounded-[1.75rem] bg-card px-6 py-5 sm:grid-cols-[2.5rem_minmax(0,1fr)] sm:gap-4">
+              <span aria-hidden="true" className="flex size-9 items-center justify-center rounded-full bg-background text-sm font-medium text-accent">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div>
@@ -39,7 +39,7 @@ export function CaseStudyBlock({ block }: { block: Block }) {
         <figure>
           <dl className="grid gap-3 sm:grid-cols-2">
             {block.items.map((stat) => (
-              <div key={stat.label} className="rounded-2xl border border-border bg-card p-6">
+              <div key={stat.label} className="rounded-[2rem] bg-card p-7">
                 <dt className="sr-only">{stat.label}</dt>
                 <dd>
                   <span className="block font-serif text-6xl font-normal tracking-tight text-accent">{stat.value}</span>
@@ -56,7 +56,7 @@ export function CaseStudyBlock({ block }: { block: Block }) {
 
     case 'note':
       return (
-        <p className="rounded-xl border-l-2 border-accent bg-card px-5 py-3 text-sm leading-relaxed text-pretty text-muted-foreground">
+        <p className="rounded-[1.5rem] bg-secondary px-6 py-4 text-sm leading-relaxed text-pretty text-muted-foreground">
           {block.text}
         </p>
       )

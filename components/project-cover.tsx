@@ -35,7 +35,7 @@ export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
         alt={project.imageAlt ?? ''}
         width={1200}
         height={900}
-        className={cn('aspect-[4/3] h-auto w-full rounded-[1.75rem] border border-border object-cover', className)}
+        className={cn('aspect-[4/3] h-auto w-full rounded-[2.75rem] border border-border object-cover', className)}
         sizes={sizes}
       />
     )
@@ -49,7 +49,7 @@ export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
       role="img"
       aria-label={`${project.title} cover`}
       className={cn(
-        'relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] border border-foreground/[0.06]',
+        'relative aspect-[4/3] w-full overflow-hidden rounded-[2.75rem] border border-foreground/[0.06]',
         tone.bg,
         className,
       )}
@@ -68,7 +68,7 @@ export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
       <div className="absolute top-[47%] left-1/2 flex aspect-square h-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[26%] border border-foreground/10 bg-background/85 shadow-sm">
         <Icon className="size-[44%] text-accent" strokeWidth={1.5} aria-hidden="true" />
       </div>
-      <div className="absolute inset-x-[6%] bottom-[7%] flex items-end justify-between gap-4 font-mono text-[clamp(0.6rem,1.2vw,0.75rem)] tracking-widest text-foreground/60 uppercase">
+      <div className="absolute inset-x-[6%] bottom-[7%] flex items-end justify-between gap-4 text-[clamp(0.6rem,1.2vw,0.75rem)] font-medium tracking-[0.12em] text-foreground/60 uppercase">
         <span>{project.org}</span>
         <span>{project.stamp}</span>
       </div>

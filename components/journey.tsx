@@ -7,12 +7,12 @@ const imageColumnX = (index: number) => (index % 2 === 0 ? 25 : 75)
 
 export function Journey() {
   return (
-    <section id="journey" aria-labelledby="journey-title" className="site-container scroll-mt-8">
+    <section id="journey" aria-labelledby="journey-title" className="site-container scroll-mt-28 pt-8">
       <h2 id="journey-title" className="sr-only">
         Selected projects, most recent first
       </h2>
-      {/* Each connector is stamped with the dates of the stop it leads into. */}
-      <JourneyConnector from={50} to={imageColumnX(0)} label={projects[0].stamp} />
+      {/* The hero's trail leads into the first stop; each connector after it is
+          stamped with the dates of the stop it leads into. */}
       {projects.map((project, index) => (
         <Fragment key={project.slug}>
           <JourneyStop project={project} index={index} />
