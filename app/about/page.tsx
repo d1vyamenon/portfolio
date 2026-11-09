@@ -4,11 +4,10 @@ import { Camera } from 'lucide-react'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { cn } from '@/lib/utils'
-import { site } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'A little about Divya Menon outside of design: bouldering, crocheting, cooking and more.',
+  description: 'A little about Divya Menon outside of design: bouldering, crafting jewelry, and Bharatanatyam.',
 }
 
 // ---------------------------------------------------------------------------
@@ -22,41 +21,22 @@ const portrait = { src: '', label: 'A candid photo of you' }
 const hobbies = [
   {
     title: 'Bouldering',
-    text: 'Where I go to problem-solve with my whole body instead of a screen.',
+    text: 'Where you’ll find me after a long day of work and classes.',
     photo: { src: '', label: 'You on the wall' },
     tilt: '-rotate-2',
   },
   {
-    title: 'Crocheting',
-    text: 'Slow, repetitive and very satisfying when a pattern finally clicks.',
-    photo: { src: '', label: 'Something you made' },
+    title: 'Crafting',
+    text: 'Especially jewelry and accessories.',
+    photo: { src: '', label: 'Jewelry or accessories you made' },
     tilt: 'rotate-1',
   },
   {
-    title: 'Cooking',
-    text: 'Mostly recipes I found on social media. Results vary, and that’s half the fun.',
-    photo: { src: '', label: 'A dish you’re proud of' },
+    title: 'Bharatanatyam',
+    text: 'I re-learn excerpts of past dances as a way to destress.',
+    photo: { src: '', label: 'You dancing' },
     tilt: '-rotate-1',
   },
-  {
-    title: 'Catching up on a show',
-    text: 'The best way to end a long week.',
-    photo: { src: '', label: 'Your current comfort show' },
-    tilt: 'rotate-2',
-  },
-]
-
-const currently = [
-  { label: 'Watching', value: 'Add the show you’re watching', placeholder: true },
-  { label: 'Crocheting', value: 'Add your current project', placeholder: true },
-  { label: 'Cooking', value: 'Add the last recipe you tried', placeholder: true },
-  { label: 'Listening to', value: 'Add a song, album or podcast', placeholder: true },
-]
-
-const funFacts = [
-  { text: 'Add a fun fact about yourself', placeholder: true },
-  { text: 'Add something people are surprised to learn about you', placeholder: true },
-  { text: 'Add a small thing that makes your day', placeholder: true },
 ]
 
 // ---------------------------------------------------------------------------
@@ -87,16 +67,6 @@ function Photo({ src, label, className }: { src: string; label: string; classNam
   )
 }
 
-function Fill({ children, placeholder }: { children: React.ReactNode; placeholder?: boolean }) {
-  return placeholder ? (
-    <span className="text-muted-foreground italic underline decoration-accent/40 decoration-dashed underline-offset-4">
-      {children}
-    </span>
-  ) : (
-    <>{children}</>
-  )
-}
-
 export default function AboutPage() {
   return (
     <>
@@ -123,13 +93,16 @@ export default function AboutPage() {
             </h1>
             <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
               <p>
-                I’m Divya. I studied cognitive science because I’ve always been curious about why people think the way
-                they do, and I ended up in design because I wanted to do something with the answers.
+                I’m currently a Master of Human-Computer Interaction student at Carnegie Mellon University. Outside of
+                being a student and designer, I have a few other obsessions.
               </p>
               <p>
-                Outside of work, I’m usually doing something with my hands: climbing, crocheting, or attempting a
-                recipe I saw online. I like projects where you can see your progress, and I think that’s a big part of
-                why I love iterating on designs too.
+                After a long day of work and classes, you’ll probably find me at a bouldering gym. When I’m not tearing
+                up my hands trying to climb little plastic rocks, I love to craft, especially jewelry and accessories!
+              </p>
+              <p>
+                I’m also a trained Bharatanatyam (Indian classical) dancer, and I often re-learn excerpts of past
+                dances as a way to destress.
               </p>
             </div>
           </div>
@@ -140,7 +113,7 @@ export default function AboutPage() {
           <h2 id="offline-title" className="font-serif text-4xl tracking-tight md:text-5xl">
             When I’m not designing
           </h2>
-          <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
             {hobbies.map((h) => (
               <li key={h.title}>
                 <figure
@@ -160,54 +133,6 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
-        </section>
-
-        {/* Currently + fun facts */}
-        <section className="mt-28 grid gap-6 md:mt-36 lg:grid-cols-2">
-          <div aria-labelledby="currently-title" className="rounded-[2.5rem] bg-card p-8 md:p-12">
-            <h2 id="currently-title" className="font-serif text-4xl tracking-tight">
-              Lately
-            </h2>
-            <dl className="mt-8 space-y-5">
-              {currently.map((c) => (
-                <div key={c.label} className="grid gap-1 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-4">
-                  <dt className="font-serif text-lg text-accent italic">{c.label}</dt>
-                  <dd className="text-lg leading-snug">
-                    <Fill placeholder={c.placeholder}>{c.value}</Fill>
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-          <div aria-labelledby="facts-title" className="rounded-[2.5rem] bg-primary p-8 text-primary-foreground md:p-12">
-            <h2 id="facts-title" className="font-serif text-4xl tracking-tight">
-              A few fun facts
-            </h2>
-            <ol className="mt-8 space-y-5">
-              {funFacts.map((f, i) => (
-                <li key={i} className="flex gap-4 text-lg leading-snug">
-                  <span aria-hidden="true" className="font-serif text-2xl leading-none italic">
-                    {i + 1}.
-                  </span>
-                  <span className={f.placeholder ? 'italic underline decoration-primary-foreground/50 decoration-dashed underline-offset-4' : undefined}>
-                    {f.text}
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        {/* Sign-off */}
-        <section className="mt-28 text-center md:mt-36">
-          <p className="mx-auto max-w-2xl font-serif text-3xl leading-snug text-balance md:text-4xl">
-            I’d love to hear what you’re working on, or your best recipe recommendation.{' '}
-            <a href={`mailto:${site.email}`} className="text-accent italic underline decoration-accent/40 underline-offset-4 hover:decoration-accent">
-              Say hi
-            </a>
-            .
-          </p>
         </section>
       </main>
       <SiteFooter />
