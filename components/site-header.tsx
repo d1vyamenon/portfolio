@@ -10,7 +10,7 @@ import { site } from '@/lib/site'
 const links = [
   { href: '/#journey', label: 'Work', match: (p: string) => p === '/' || p.startsWith('/work') },
   { href: '/about', label: 'About', match: (p: string) => p.startsWith('/about') },
-  { href: '#contact', label: 'Contact', match: () => false },
+  { href: '/contact', label: 'Contact', match: (p: string) => p.startsWith('/contact') },
 ]
 
 /**
