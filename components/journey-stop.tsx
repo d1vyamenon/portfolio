@@ -1,8 +1,8 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
+import { ProjectCover } from '@/components/project-cover'
 import { cn } from '@/lib/utils'
 import { useInView } from '@/hooks/use-in-view'
 import type { Project } from '@/lib/projects'
@@ -16,65 +16,67 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
   const { ref, inView } = useInView<HTMLElement>(0.2)
   const imageFirst = index % 2 === 0
   const stopNumber = String(index + 1).padStart(2, '0')
+  const href = `/work/${project.slug}`
 
   return (
     <article
       ref={ref}
       aria-labelledby={`${project.slug}-title`}
       className={cn(
-        'grid items-center gap-8 transition-all duration-700 ease-out motion-reduce:transition-none md:grid-cols-2 md:gap-16',
+        'grid items-center gap-8 transition-all duration-700 ease-out motion-reduce:transition-none md:grid-cols-2 md:gap-12 lg:gap-20',
         inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0',
       )}
     >
       <Link
-        href={project.href}
+        href={href}
         className={cn(
-          'group relative mx-auto block w-full max-w-md rounded-2xl focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
+          'group relative block w-full rounded-[1.5rem] focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
           !imageFirst && 'md:order-2',
         )}
         tabIndex={-1}
         aria-hidden="true"
       >
-        <Image
-          src={project.image || '/placeholder.svg'}
-          alt={project.imageAlt}
-          width={1024}
-          height={1024}
-          className={cn(
-            'h-auto w-full rounded-[2.5rem] transition-transform duration-500 group-hover:rotate-0',
-            imageFirst ? '-rotate-1' : 'rotate-1',
-          )}
-          sizes="(min-width: 768px) 448px, 100vw"
+        <ProjectCover
+          project={project}
+          className="transition-transform duration-500 ease-out group-hover:scale-[1.015]"
+          sizes="(min-width: 1440px) 640px, (min-width: 768px) 45vw, 100vw"
         />
       </Link>
 
-      <div className={cn('max-w-md', imageFirst ? 'md:justify-self-start' : 'md:order-1 md:justify-self-end')}>
-        <p className="font-serif text-lg text-muted-foreground italic">
-          {'Stop no. '}
-          {stopNumber}
+      <div className={cn('max-w-xl', imageFirst ? 'md:justify-self-start' : 'md:order-1 md:justify-self-end')}>
+        <p className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
+          <span className="text-accent">{stopNumber}</span>
+          <span aria-hidden="true">{' / '}</span>
+          {project.org}
         </p>
-        <h3 id={`${project.slug}-title`} className="mt-1 font-serif text-5xl tracking-tight text-balance md:text-6xl">
+        <h3
+          id={`${project.slug}-title`}
+          className="mt-3 font-serif text-5xl font-normal tracking-tight text-balance md:text-6xl"
+        >
           {project.title}
         </h3>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="mt-3 text-sm text-muted-foreground">
           {project.role}
           <span aria-hidden="true">{' · '}</span>
-          {project.year}
+          {project.timeline}
         </p>
-        <p className="mt-4 leading-relaxed text-pretty text-foreground/85">{project.summary}</p>
-        <ul className="mt-5 flex flex-wrap gap-2" aria-label="Focus areas">
-          {project.tags.map((tag) => (
-            <li
-              key={tag}
-              className="rounded-full border border-accent px-3 py-1 text-xs font-medium text-foreground/80"
-            >
-              {tag}
-            </li>
-          ))}
-        </ul>
+        <p className="mt-5 leading-relaxed text-pretty text-foreground/80 md:text-lg">{project.summary}</p>
+        {/* Skills and tools: label on top, values underneath, side by side when there's room */}
+        <dl className={cn('mt-6 grid gap-x-8 gap-y-4', project.tools && 'sm:grid-cols-2')}>
+          <div>
+            <dt className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">Skills</dt>
+            <dd className="mt-1.5 leading-relaxed text-pretty text-foreground/85">{project.skills.join(', ')}</dd>
+          </div>
+          {project.tools ? (
+            <div>
+              <dt className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">Tools</dt>
+              <dd className="mt-1.5 leading-relaxed text-pretty text-foreground/85">{project.tools.join(', ')}</dd>
+            </div>
+          ) : null}
+        </dl>
         <Link
-          href={project.href}
-          className="group mt-6 inline-flex items-center gap-1.5 font-medium underline decoration-accent decoration-2 underline-offset-4 hover:decoration-primary"
+          href={href}
+          className="group mt-7 inline-flex items-center gap-1.5 font-medium text-accent hover:text-foreground"
         >
           {'Read the case study'}
           <span className="sr-only">{` for ${project.title}`}</span>

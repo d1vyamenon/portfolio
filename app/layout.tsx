@@ -1,43 +1,29 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Geist, Instrument_Serif } from 'next/font/google'
+import { DM_Sans, Fraunces } from 'next/font/google'
 import './globals.css'
 
-const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
-const instrumentSerif = Instrument_Serif({
+// DM Sans: a friendly, rounded sans for body text and labels.
+const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans' })
+// Fraunces: a soft, warm serif for headings ("SOFT" axis is turned up in globals.css).
+const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: '400',
   style: ['normal', 'italic'],
-  variable: '--font-instrument-serif',
+  axes: ['SOFT', 'opsz'],
+  variable: '--font-fraunces',
 })
 
 export const metadata: Metadata = {
-  title: 'Divya — UX Designer',
-  description:
-    'UX portfolio of Divya, a designer who maps the journey between people and products. Follow the path through selected case studies.',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+  title: {
+    default: 'Divya Menon — UX Researcher & Designer',
+    template: '%s — Divya Menon',
   },
+  description:
+    'UX research and design portfolio of Divya Menon, a Carnegie Mellon MHCI student with a background in cognitive science. Follow the path through her case studies.',
 }
 
 export const viewport: Viewport = {
   colorScheme: 'light',
-  themeColor: '#f7f1e6',
+  themeColor: '#f4efe7',
 }
 
 export default function RootLayout({
@@ -46,10 +32,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${instrumentSerif.variable} light bg-background`}>
+    <html lang="en" className={`${dmSans.variable} ${fraunces.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
