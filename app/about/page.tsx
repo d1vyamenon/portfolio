@@ -21,21 +21,18 @@ const portrait = { src: '', label: 'A candid photo of you' }
 const hobbies = [
   {
     title: 'Bouldering',
-    text: 'Where you’ll find me after a long day of work and classes.',
     photo: { src: '', label: 'You on the wall' },
-    tilt: '-rotate-2',
+    tilt: '-rotate-3', offset: 'lg:mt-0',
   },
   {
     title: 'Crafting',
-    text: 'Especially jewelry and accessories.',
     photo: { src: '', label: 'Jewelry or accessories you made' },
-    tilt: 'rotate-1',
+    tilt: 'rotate-2', offset: 'lg:mt-20',
   },
   {
     title: 'Bharatanatyam',
-    text: 'I re-learn excerpts of past dances as a way to destress.',
     photo: { src: '', label: 'You dancing' },
-    tilt: '-rotate-1',
+    tilt: '-rotate-2', offset: 'lg:mt-6',
   },
 ]
 
@@ -108,34 +105,28 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Hobbies as a loose row of snapshots */}
-        <section aria-labelledby="offline-title" className="mt-28 md:mt-36">
-          <h2 id="offline-title" className="font-serif text-4xl tracking-tight md:text-5xl">
-            When I’m not designing
-          </h2>
-          <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+        {/* Snapshots: a loose, scattered collage, no heading needed */}
+        <section aria-label="Things I love outside of design" className="mt-24 md:mt-32">
+          <ul className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-14">
             {hobbies.map((h) => (
-              <li key={h.title}>
+              <li key={h.title} className={h.offset}>
                 <figure
                   className={cn(
-                    'rounded-[1.25rem] bg-[#fbf8f3] p-3 pb-5 shadow-[0_12px_32px_-18px_rgba(36,24,26,0.35)] transition-transform duration-300 hover:rotate-0',
+                    'rounded-[1.25rem] bg-[#fbf8f3] p-3 pb-4 shadow-[0_14px_36px_-18px_rgba(36,24,26,0.4)] transition-transform duration-300 hover:rotate-0',
                     h.tilt,
                   )}
                 >
                   <div className="aspect-[4/5] overflow-hidden rounded-[0.9rem]">
                     <Photo src={h.photo.src} label={h.photo.label} className="rounded-[0.9rem]" />
                   </div>
-                  <figcaption className="px-2 pt-4">
-                    <span className="block font-serif text-2xl">{h.title}</span>
-                    <span className="mt-1 block leading-snug text-pretty text-muted-foreground">{h.text}</span>
-                  </figcaption>
+                  <figcaption className="pt-4 text-center font-serif text-2xl italic">{h.title}</figcaption>
                 </figure>
               </li>
             ))}
           </ul>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter showContact={false} />
     </>
   )
 }

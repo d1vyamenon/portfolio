@@ -1,9 +1,15 @@
 import { ArrowUpRight, Mail } from 'lucide-react'
 import { site } from '@/lib/site'
 
-export function SiteFooter() {
+type SiteFooterProps = {
+  /** Show the big "Let's chat" contact block. Off on the About page, where a simple line is enough. */
+  showContact?: boolean
+}
+
+export function SiteFooter({ showContact = true }: SiteFooterProps) {
   return (
     <footer id="contact" className="site-container scroll-mt-24 pt-16 pb-10">
+      {showContact ? (
       <div className="rounded-[3rem] bg-primary px-6 py-14 text-primary-foreground md:px-14 md:py-20">
         <p className="text-xs font-medium tracking-[0.12em] text-primary-foreground/80 uppercase">Next stop</p>
         <h2 className="mt-4 max-w-3xl font-serif text-6xl leading-[0.95] font-normal tracking-tight text-balance md:text-8xl">
@@ -40,9 +46,32 @@ export function SiteFooter() {
           </a>
         </div>
       </div>
-      <div className="mt-8 flex flex-wrap justify-between gap-2 text-xs font-medium tracking-wider text-muted-foreground uppercase">
+      ) : null}
+      <div
+        className={`flex flex-wrap items-center justify-between gap-x-6 gap-y-3 text-xs font-medium tracking-wider text-muted-foreground uppercase ${showContact ? 'mt-8' : 'border-t border-border pt-8'}`}
+      >
         <p>{`© ${new Date().getFullYear()} ${site.name}`}</p>
-        <p>Pittsburgh, PA</p>
+        {showContact ? (
+          <p>Pittsburgh, PA</p>
+        ) : (
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            <li>
+              <a href={`mailto:${site.email}`} className="transition-colors hover:text-accent">
+                Email
+              </a>
+            </li>
+            <li>
+              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href={site.resume} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
+                Résumé
+              </a>
+            </li>
+          </ul>
+        )}
       </div>
     </footer>
   )
