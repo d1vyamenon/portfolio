@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Camera } from 'lucide-react'
 import { LoopVideo } from '@/components/loop-video'
+import { PhotoCarousel } from '@/components/photo-carousel'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { cn } from '@/lib/utils'
@@ -23,6 +24,8 @@ type Hobby = {
   title: string
   photo: { src: string; label: string }
   video?: { src: string; poster: string; label: string }
+  /** Several photos that crossfade every 15 seconds. Shown instead of the photo when set. */
+  slideshow?: { src: string; alt: string }[]
   tilt: string
   offset: string
 }
@@ -38,6 +41,16 @@ const hobbies: Hobby[] = [
   {
     title: 'Crafting',
     photo: { src: '', label: 'Jewelry or accessories you made' },
+    slideshow: [
+      {
+        src: '/about/crafting-paper-flower.jpg',
+        alt: 'A hand holding a flower made from curled strips of printed packaging on a twisted silver wire stem',
+      },
+      {
+        src: '/about/crafting-wire-sculpture.jpg',
+        alt: 'A hand holding a swirling twisted-wire sculpture with small blue beads, in sunlight on a white cushion',
+      },
+    ],
     tilt: 'rotate-2', offset: 'lg:mt-20',
   },
   {
@@ -130,6 +143,8 @@ export default function AboutPage() {
                   <div className="aspect-[4/5] overflow-hidden rounded-[0.9rem]">
                     {h.video ? (
                       <LoopVideo {...h.video} className="rounded-[0.9rem]" />
+                    ) : h.slideshow ? (
+                      <PhotoCarousel photos={h.slideshow} interval={15} className="rounded-[0.9rem]" />
                     ) : (
                       <Photo src={h.photo.src} label={h.photo.label} className="rounded-[0.9rem]" />
                     )}
