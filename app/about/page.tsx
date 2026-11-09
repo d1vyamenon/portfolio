@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Camera } from 'lucide-react'
+import { LoopVideo } from '@/components/loop-video'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { cn } from '@/lib/utils'
@@ -18,10 +19,20 @@ export const metadata: Metadata = {
 
 const portrait = { src: '', label: 'A candid photo of you' }
 
-const hobbies = [
+type Hobby = {
+  title: string
+  photo: { src: string; label: string }
+  video?: { src: string; poster: string; label: string }
+  tilt: string
+  offset: string
+}
+
+const hobbies: Hobby[] = [
   {
     title: 'Bouldering',
     photo: { src: '', label: 'You on the wall' },
+    // Optional looping clip (silent, ~30s). Shown instead of the photo when set.
+    video: { src: '/about/bouldering.mp4', poster: '/about/bouldering-poster.jpg', label: 'Divya climbing a bouldering route' },
     tilt: '-rotate-3', offset: 'lg:mt-0',
   },
   {
@@ -117,7 +128,11 @@ export default function AboutPage() {
                   )}
                 >
                   <div className="aspect-[4/5] overflow-hidden rounded-[0.9rem]">
-                    <Photo src={h.photo.src} label={h.photo.label} className="rounded-[0.9rem]" />
+                    {h.video ? (
+                      <LoopVideo {...h.video} className="rounded-[0.9rem]" />
+                    ) : (
+                      <Photo src={h.photo.src} label={h.photo.label} className="rounded-[0.9rem]" />
+                    )}
                   </div>
                   <figcaption className="pt-4 text-center font-serif text-2xl italic">{h.title}</figcaption>
                 </figure>
