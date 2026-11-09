@@ -69,7 +69,7 @@ export function SiteHeader() {
             rel="noopener noreferrer"
             className="hidden items-center gap-1 rounded-full border border-accent px-4 py-1.5 text-[0.95rem] font-medium text-accent transition-colors hover:bg-accent hover:text-accent-foreground sm:inline-flex"
           >
-            Résumé
+            Resume
             <ArrowUpRight className="size-4" aria-hidden="true" />
           </a>
         </nav>

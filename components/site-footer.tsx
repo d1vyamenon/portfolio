@@ -19,7 +19,7 @@ const contactLinks = [
     icon: LinkedinIcon,
     external: true,
   },
-  { label: 'Résumé', value: 'View my résumé', href: site.resume, icon: FileText, external: true },
+  { label: 'Resume', value: 'View my resume', href: site.resume, icon: FileText, external: true },
 ]
 
 type SiteFooterProps = {
@@ -90,7 +90,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps) {
             </li>
             <li>
               <a href={site.resume} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
-                Résumé
+                Resume
               </a>
             </li>
           </ul>
