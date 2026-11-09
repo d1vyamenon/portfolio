@@ -5,18 +5,10 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { CaseStudyBlock, Rich } from '@/components/case-study-blocks'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
-import { getProject, projects, type CoverTone } from '@/lib/projects'
+import { getProject, projects } from '@/lib/projects'
 
 type PageProps = {
   params: Promise<{ slug: string }>
-}
-
-// Deep, muted header-band colors, one per project tone, all paired with off-white text.
-const bandColors: Record<CoverTone, string> = {
-  ember: 'bg-[#6e1f2c]',
-  slate: 'bg-[#26363d]',
-  moss: 'bg-[#2f3b2a]',
-  plum: 'bg-[#3d2541]',
 }
 
 export function generateStaticParams() {
@@ -55,7 +47,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           {/* Header band: big title, then overview beside Time Frame / Role / Skills / Tools */}
           <header className="site-container pt-6">
             <div
-              className={`rounded-[3rem] px-6 pt-8 pb-10 text-[#f7f3ec] sm:px-10 md:px-14 md:pt-10 md:pb-14 ${bandColors[project.cover.tone]}`}
+              className="rounded-[3rem] bg-primary px-6 pt-8 pb-10 text-primary-foreground sm:px-10 md:px-14 md:pt-10 md:pb-14"
             >
               <Link
                 href="/#journey"
@@ -70,7 +62,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                   {project.band.title}
                 </span>
                 {project.band.subtitle ? (
-                  <span className="mt-3 block font-serif text-3xl leading-tight text-balance text-[#f7f3ec]/85 italic md:text-5xl">
+                  <span className="mt-3 block font-serif text-3xl leading-tight text-balance text-primary-foreground/85 italic md:text-5xl">
                     {project.band.subtitle}
                   </span>
                 ) : null}
@@ -85,14 +77,14 @@ export default async function CaseStudyPage({ params }: PageProps) {
               <div className="mt-12 grid gap-10 rounded-[2.25rem] bg-white/[0.07] p-6 sm:p-8 md:mt-16 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16 lg:p-10">
                 <div>
                   <h2 className="font-serif text-3xl md:text-4xl">Overview</h2>
-                  <p className="mt-4 text-lg leading-relaxed text-pretty text-[#f7f3ec]/85 [&_strong]:text-[#f7f3ec]">
+                  <p className="mt-4 text-lg leading-relaxed text-pretty text-primary-foreground/85 [&_strong]:text-primary-foreground">
                     <Rich text={project.overview} />
                   </p>
                 </div>
                 <dl className="grid grid-cols-2 gap-x-6 gap-y-8">
                   {details.map((d) => (
                     <div key={d.label}>
-                      <dt className="text-xs font-medium tracking-[0.12em] text-[#f7f3ec]/65 uppercase">{d.label}</dt>
+                      <dt className="text-xs font-medium tracking-[0.12em] text-primary-foreground/80 uppercase">{d.label}</dt>
                       {d.values.map((v) => (
                         <dd key={v} className="mt-1.5 leading-snug">
                           {v}

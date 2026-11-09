@@ -45,14 +45,13 @@ export function Hero() {
             className="font-serif text-6xl leading-[0.95] font-normal tracking-tight text-balance sm:text-7xl md:text-8xl xl:text-9xl"
           >
             {'Hi, I’m '}
-            <span className="text-accent italic">Divya</span>.
+            <span className="text-accent italic">Divya</span>
           </h1>
           <p className="mt-8 max-w-2xl text-xl leading-snug text-balance md:text-2xl">
-            A cognitive scientist turned UX researcher, designing around how people actually think.
+            Bridging human cognition and intuitive interaction.
           </p>
-          <p className="mt-4 max-w-xl leading-relaxed text-pretty text-muted-foreground md:text-lg">
-            From usability testing for an industrial AI platform to accessibility work on an online learning tool,
-            follow the trail through my work, newest first.
+          <p className="mt-3 max-w-xl text-lg leading-relaxed text-pretty text-muted-foreground md:text-xl">
+            I apply HCI principles and thoughtful UI design to make complex technology feel second nature.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a

@@ -124,7 +124,7 @@ export default function AboutPage() {
                     <p className="text-xs font-medium tracking-wider text-muted-foreground uppercase">{ed.when}</p>
                   </div>
                   <p className="text-muted-foreground">{ed.degree}</p>
-                  {ed.detail ? <p className="mt-2 text-sm leading-relaxed text-foreground/65">{ed.detail}</p> : null}
+                  {ed.detail ? <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{ed.detail}</p> : null}
                 </li>
               ))}
             </ul>
