@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { ImageIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { Block, ImageSlot } from '@/lib/projects'
+import { withBase } from '@/lib/base-path'
 
 /** Renders text with **double-asterisk** spans in bold. */
 export function Rich({ text }: { text: string }) {
@@ -36,7 +37,7 @@ function ImageBox({ slot }: { slot: ImageSlot }) {
   if (slot.src) {
     return (
       <Image
-        src={slot.src}
+        src={withBase(slot.src)}
         alt={slot.alt ?? slot.label}
         width={1600}
         height={1200}

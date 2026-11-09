@@ -6,6 +6,7 @@ import { PhotoCarousel } from '@/components/photo-carousel'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { cn } from '@/lib/utils'
+import { withBase } from '@/lib/base-path'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -74,7 +75,7 @@ function Photo({ src, label, className }: { src: string; label: string; classNam
   if (src) {
     return (
       <Image
-        src={src}
+        src={withBase(src)}
         alt={label}
         width={900}
         height={1100}

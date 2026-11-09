@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { ImageIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { Project } from '@/lib/projects'
+import { withBase } from '@/lib/base-path'
 
 type ProjectCoverProps = {
   project: Project
@@ -31,7 +32,7 @@ export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
         )}
       >
         <Image
-          src={project.image}
+          src={withBase(project.image)}
           alt={project.imageAlt ?? `${name} logo`}
           width={1200}
           height={900}

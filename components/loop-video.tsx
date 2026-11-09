@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
+import { withBase } from '@/lib/base-path'
 
 type LoopVideoProps = {
   src: string
@@ -70,8 +71,8 @@ export function LoopVideo({ src, poster, label, className }: LoopVideoProps) {
     >
       <video
         ref={ref}
-        src={src}
-        poster={poster}
+        src={withBase(src)}
+        poster={withBase(poster)}
         muted
         loop
         playsInline

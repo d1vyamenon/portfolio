@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { ArrowUpRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { site } from '@/lib/site'
+import { withBase } from '@/lib/base-path'
 
 const links = [
   { href: '/#journey', label: 'Work', match: (p: string) => p === '/' || p.startsWith('/work') },
@@ -47,7 +48,7 @@ export function SiteHeader() {
               const active = link.match(pathname)
               return (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
@@ -58,13 +59,13 @@ export function SiteHeader() {
                     )}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               )
             })}
           </ul>
           <a
-            href={site.resume}
+            href={withBase(site.resume)}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden items-center gap-1 rounded-full border border-accent px-4 py-1.5 text-[0.95rem] font-medium text-accent transition-colors hover:bg-accent hover:text-accent-foreground sm:inline-flex"

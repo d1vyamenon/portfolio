@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ArrowDown, Camera } from 'lucide-react'
 import { HeroTrail } from '@/components/hero-trail'
 import { site } from '@/lib/site'
+import { withBase } from '@/lib/base-path'
 
 // A soft, hand-drawn-feeling blob instead of a hard rectangle.
 const blob = 'rounded-[46%_54%_42%_58%/52%_44%_56%_48%]'
@@ -15,7 +16,7 @@ function HeroPhoto() {
       <div aria-hidden="true" className={`absolute inset-0 translate-x-3 translate-y-3 border-2 border-accent/30 ${blob}`} />
       {site.photo ? (
         <Image
-          src={site.photo}
+          src={withBase(site.photo)}
           alt={`Portrait of ${site.name}`}
           width={900}
           height={1100}

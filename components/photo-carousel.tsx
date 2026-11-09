@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
+import { withBase } from '@/lib/base-path'
 
 type PhotoCarouselProps = {
   photos: { src: string; alt: string }[]
@@ -38,7 +39,7 @@ export function PhotoCarousel({ photos, interval = 15, className }: PhotoCarouse
       {photos.map((photo, i) => (
         <Image
           key={photo.src}
-          src={photo.src}
+          src={withBase(photo.src)}
           alt={photo.alt}
           aria-hidden={i !== index}
           width={900}

@@ -1,5 +1,6 @@
 import { ArrowUpRight, FileText, Mail } from 'lucide-react'
 import { site } from '@/lib/site'
+import { withBase } from '@/lib/base-path'
 
 // lucide-react 1.x no longer ships brand logos, so the LinkedIn mark is drawn here.
 function LinkedinIcon({ className }: { className?: string }) {
@@ -19,7 +20,7 @@ const contactLinks = [
     icon: LinkedinIcon,
     external: true,
   },
-  { label: 'Resume', value: 'View my resume', href: site.resume, icon: FileText, external: true },
+  { label: 'Resume', value: 'View my resume', href: withBase(site.resume), icon: FileText, external: true },
 ]
 
 type SiteFooterProps = {
@@ -89,7 +90,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps) {
               </a>
             </li>
             <li>
-              <a href={site.resume} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
+              <a href={withBase(site.resume)} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
                 Resume
               </a>
             </li>
