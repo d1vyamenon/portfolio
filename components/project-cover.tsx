@@ -1,24 +1,7 @@
 import Image from 'next/image'
-import { Accessibility, Lightbulb, MessagesSquare, MousePointerClick, Smartphone, TrendingUp } from 'lucide-react'
+import { ImageIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import type { CoverIcon, CoverTone, Project } from '@/lib/projects'
-
-const icons: Record<CoverIcon, typeof Smartphone> = {
-  phone: Smartphone,
-  growth: TrendingUp,
-  pointer: MousePointerClick,
-  lightbulb: Lightbulb,
-  interviews: MessagesSquare,
-  accessibility: Accessibility,
-}
-
-// Each tone is a soft paper-colored surface plus a slightly deeper line color for the grid and rings.
-const tones: Record<CoverTone, { bg: string; line: string; glow: string }> = {
-  ember: { bg: 'bg-[#ebdad5]', line: 'text-[#cfb2a9]', glow: 'from-[#6e1f2c]/10' },
-  slate: { bg: 'bg-[#e3e0da]', line: 'text-[#c6bfb5]', glow: 'from-[#ffffff]/50' },
-  moss: { bg: 'bg-[#dfe3d7]', line: 'text-[#c1c9b4]', glow: 'from-[#ffffff]/50' },
-  plum: { bg: 'bg-[#ebe1cf]', line: 'text-[#d3c4a9]', glow: 'from-[#ffffff]/50' },
-}
+import type { Project } from '@/lib/projects'
 
 type ProjectCoverProps = {
   project: Project
@@ -26,51 +9,50 @@ type ProjectCoverProps = {
   sizes?: string
 }
 
-/** A project's cover: its real image when one is set, otherwise a drawn card in the project's tone. */
+/**
+ * The image beside each project on the homepage.
+ *
+ * To add one, put a PNG (a company logo or a related graphic, ideally with a
+ * transparent background) in /public/projects and set `image` and `imageAlt`
+ * on the project in lib/projects.ts. It's shown whole (never cropped), centered
+ * on a soft card, so logos of any shape fit.
+ *
+ * Until then, a labeled placeholder box shows where it will go.
+ */
 export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
+  const name = project.logoName ?? project.org
+
   if (project.image) {
     return (
-      <Image
-        src={project.image}
-        alt={project.imageAlt ?? ''}
-        width={1200}
-        height={900}
-        className={cn('aspect-[4/3] h-auto w-full rounded-[2.75rem] border border-border object-cover', className)}
-        sizes={sizes}
-      />
+      <div
+        className={cn(
+          'relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[2.75rem] bg-card p-[12%]',
+          className,
+        )}
+      >
+        <Image
+          src={project.image}
+          alt={project.imageAlt ?? `${name} logo`}
+          width={1200}
+          height={900}
+          className="h-full w-full object-contain"
+          sizes={sizes}
+        />
+      </div>
     )
   }
-
-  const Icon = icons[project.cover.icon]
-  const tone = tones[project.cover.tone]
 
   return (
     <div
       role="img"
-      aria-label={`${project.title} cover`}
+      aria-label={`Image placeholder for ${project.title}`}
       className={cn(
-        'relative aspect-[4/3] w-full overflow-hidden rounded-[2.75rem] border border-foreground/[0.06]',
-        tone.bg,
+        'flex aspect-[4/3] w-full flex-col items-center justify-center gap-2 rounded-[2.75rem] border-2 border-dashed border-foreground/15 bg-card p-6 text-center text-muted-foreground',
         className,
       )}
     >
-      <div aria-hidden="true" className={cn('absolute inset-0 bg-radial-[at_50%_45%] to-transparent to-60%', tone.glow)} />
-      <svg aria-hidden="true" viewBox="0 0 120 90" preserveAspectRatio="xMidYMid slice" className={cn('absolute inset-0 size-full', tone.line)} fill="none">
-        <defs>
-          <pattern id={`grid-${project.slug}`} width="10" height="10" patternUnits="userSpaceOnUse">
-            <path d="M 10 0 L 0 0 0 10" stroke="currentColor" strokeWidth="0.25" />
-          </pattern>
-        </defs>
-        <rect width="120" height="90" fill={`url(#grid-${project.slug})`} opacity="0.7" />
-        <circle cx="60" cy="42" r="24" stroke="currentColor" strokeWidth="0.5" />
-        <circle cx="60" cy="42" r="34" stroke="currentColor" strokeWidth="0.35" strokeDasharray="1 2" />
-      </svg>
-      <div className="absolute top-[47%] left-1/2 flex aspect-square h-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[26%] border border-foreground/10 bg-background/85 shadow-sm">
-        <Icon className="size-[44%] text-accent" strokeWidth={1.5} aria-hidden="true" />
-      </div>
-      <div className="absolute inset-x-[6%] bottom-[7%] text-[clamp(0.6rem,1.2vw,0.75rem)] font-medium tracking-[0.12em] text-muted-foreground uppercase">
-        {project.org}
-      </div>
+      <ImageIcon className="size-7 opacity-60" aria-hidden="true" />
+      <span className="text-sm font-medium">{name} logo or graphic</span>
     </div>
   )
 }

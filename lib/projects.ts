@@ -58,8 +58,11 @@ export type Project = {
   tools?: string[]
   skills: string[]
   cover: { icon: CoverIcon; tone: CoverTone }
+  /** Homepage image: a logo or related graphic PNG in /public/projects, e.g. '/projects/cognite.png'. */
   image?: string
   imageAlt?: string
+  /** Name used in the homepage placeholder and default alt text. Defaults to `org`. */
+  logoName?: string
   /** Big title and subtitle in the case study's colored header band. */
   band: { title: string; subtitle?: string }
   overview: string
@@ -74,6 +77,7 @@ const projectsChronological: Project[] = [
     slug: 'instagram-stories',
     title: 'Instagram Stories',
     org: 'Course project',
+    logoName: 'Instagram',
     role: 'Design Student',
     year: '2024',
     timeline: 'Jan – Mar 2024',
