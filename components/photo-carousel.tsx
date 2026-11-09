@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { Pause, Play } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 type PhotoCarouselProps = {
@@ -14,7 +13,7 @@ type PhotoCarouselProps = {
 
 /**
  * Photos that slowly crossfade into one another.
- * - Pause/play button, since auto-changing content over 5 seconds must be pausable (WCAG 2.2.2).
+ * - Click or tap to pause/play, since auto-changing content over 5 seconds must be pausable (WCAG 2.2.2).
  * - Doesn't auto-advance for visitors who prefer reduced motion.
  */
 export function PhotoCarousel({ photos, interval = 15, className }: PhotoCarouselProps) {
@@ -31,7 +30,10 @@ export function PhotoCarousel({ photos, interval = 15, className }: PhotoCarouse
     return () => window.clearInterval(id)
   }, [paused, interval, photos.length])
 
+  const label = paused ? 'Play photo slideshow' : 'Pause photo slideshow'
+
   return (
+    // No visible control: clicking the photo, or pressing Enter/Space when it's focused, pauses it (WCAG 2.2.2).
     <div className={cn('relative h-full w-full overflow-hidden', className)}>
       {photos.map((photo, i) => (
         <Image
@@ -52,11 +54,9 @@ export function PhotoCarousel({ photos, interval = 15, className }: PhotoCarouse
         <button
           type="button"
           onClick={() => setPaused((p) => !p)}
-          aria-label={paused ? 'Play photo slideshow' : 'Pause photo slideshow'}
-          className="absolute right-3 bottom-3 flex size-9 items-center justify-center rounded-full bg-background/85 text-foreground shadow-sm backdrop-blur-sm transition-colors hover:bg-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-        >
-          {paused ? <Play className="size-4 translate-x-px" aria-hidden="true" /> : <Pause className="size-4" aria-hidden="true" />}
-        </button>
+          aria-label={label}
+          className="absolute inset-0 cursor-pointer rounded-[inherit] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset focus-visible:outline-none"
+        />
       ) : null}
     </div>
   )

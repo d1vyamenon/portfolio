@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Pause, Play } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 type LoopVideoProps = {
@@ -13,7 +12,7 @@ type LoopVideoProps = {
 
 /**
  * A silent, looping clip that plays on its own, like a moving photo.
- * - Pause/play button, since motion over 5 seconds must be pausable (WCAG 2.2.2).
+ * - Click or tap to pause/play, since motion over 5 seconds must be pausable (WCAG 2.2.2).
  * - Starts paused on the poster frame for visitors who prefer reduced motion.
  * - Only plays while on screen, to save battery and data.
  */
@@ -58,7 +57,17 @@ export function LoopVideo({ src, poster, label, className }: LoopVideoProps) {
   }
 
   return (
-    <div className={cn('relative h-full w-full', className)}>
+    // No visible control: clicking the clip, or pressing Enter/Space when it's focused, pauses it.
+    // That keeps it pausable (WCAG 2.2.2) without a button on top of the photo.
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label={paused ? `Play video: ${label}` : `Pause video: ${label}`}
+      className={cn(
+        'block h-full w-full cursor-pointer focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none',
+        className,
+      )}
+    >
       <video
         ref={ref}
         src={src}
@@ -67,17 +76,9 @@ export function LoopVideo({ src, poster, label, className }: LoopVideoProps) {
         loop
         playsInline
         preload="metadata"
-        aria-label={label}
-        className="h-full w-full object-cover"
+        aria-hidden="true"
+        className="pointer-events-none h-full w-full object-cover"
       />
-      <button
-        type="button"
-        onClick={toggle}
-        aria-label={paused ? `Play video: ${label}` : `Pause video: ${label}`}
-        className="absolute right-3 bottom-3 flex size-9 items-center justify-center rounded-full bg-background/85 text-foreground shadow-sm backdrop-blur-sm transition-colors hover:bg-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-      >
-        {paused ? <Play className="size-4 translate-x-px" aria-hidden="true" /> : <Pause className="size-4" aria-hidden="true" />}
-      </button>
-    </div>
+    </button>
   )
 }

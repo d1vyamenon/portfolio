@@ -18,7 +18,10 @@ export const metadata: Metadata = {
 // Anything with `placeholder: true` shows as a soft "fill me in" note until you edit it.
 // ---------------------------------------------------------------------------
 
-const portrait = { src: '', label: 'A candid photo of you' }
+const portrait = {
+  src: '/about/divya-portrait.jpg',
+  label: 'Divya smiling, crouched on a low concrete wall at UC San Diego in her graduation stole, holding her cap',
+}
 
 type Hobby = {
   title: string
@@ -136,7 +139,7 @@ export default function AboutPage() {
               <li key={h.title} className={h.offset}>
                 <figure
                   className={cn(
-                    'rounded-[1.25rem] bg-[#fbf8f3] p-3 pb-4 shadow-[0_14px_36px_-18px_rgba(36,24,26,0.4)] transition-transform duration-300 hover:rotate-0',
+                    'rounded-[1.25rem] bg-[#fbf8f3] p-3 pb-4 shadow-[0_14px_36px_-18px_rgba(36,24,26,0.4)]',
                     h.tilt,
                   )}
                 >
