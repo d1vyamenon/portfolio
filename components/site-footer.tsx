@@ -3,7 +3,7 @@ import { site } from '@/lib/site'
 
 export function SiteFooter() {
   return (
-    <footer id="contact" className="site-container scroll-mt-20 pt-16 pb-10">
+    <footer id="contact" className="site-container scroll-mt-24 pt-16 pb-10">
       <div className="rounded-[3rem] bg-primary px-6 py-14 text-primary-foreground md:px-14 md:py-20">
         <p className="text-xs font-medium tracking-[0.12em] text-primary-foreground/80 uppercase">Next stop</p>
         <h2 className="mt-4 max-w-3xl font-serif text-6xl leading-[0.95] font-normal tracking-tight text-balance md:text-8xl">

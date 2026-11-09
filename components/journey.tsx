@@ -7,7 +7,7 @@ const imageColumnX = (index: number) => (index % 2 === 0 ? 25 : 75)
 
 export function Journey() {
   return (
-    <section id="journey" aria-labelledby="journey-title" className="site-container scroll-mt-28 pt-8">
+    <section id="journey" aria-labelledby="journey-title" className="site-container scroll-mt-24 pt-8">
       <h2 id="journey-title" className="sr-only">
         Selected projects, most recent first
       </h2>
