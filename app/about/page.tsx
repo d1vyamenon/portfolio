@@ -59,6 +59,11 @@ const hobbies: Hobby[] = [
   {
     title: 'Bharatanatyam',
     photo: { src: '', label: 'You dancing' },
+    video: {
+      src: '/about/bharatanatyam.mp4',
+      poster: '/about/bharatanatyam-poster.jpg',
+      label: 'Divya performing Bharatanatyam on stage in a red, orange and blue costume',
+    },
     tilt: '-rotate-2', offset: 'lg:mt-6',
   },
 ]
