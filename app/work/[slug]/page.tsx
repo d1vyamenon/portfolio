@@ -47,7 +47,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           {/* Header band: big title, then overview beside Time Frame / Role / Skills / Tools */}
           <header className="site-container pt-6">
             <div
-              className="rounded-[3rem] bg-primary px-6 pt-8 pb-10 text-primary-foreground sm:px-10 md:px-14 md:pt-10 md:pb-14"
+              className="rounded-[1rem] bg-primary px-6 pt-8 pb-10 text-primary-foreground sm:px-10 md:px-14 md:pt-10 md:pb-14"
             >
               <Link
                 href="/#journey"
@@ -74,7 +74,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 </p>
               ) : null}
 
-              <div className="mt-12 grid gap-10 rounded-[2.25rem] bg-white/[0.07] p-6 sm:p-8 md:mt-16 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16 lg:p-10">
+              <div className="mt-12 grid gap-10 rounded-[0.875rem] bg-white/[0.07] p-6 sm:p-8 md:mt-16 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-16 lg:p-10">
                 <div>
                   <h2 className="font-serif text-3xl md:text-4xl">Overview</h2>
                   <p className="mt-4 text-lg leading-relaxed text-pretty text-primary-foreground/85 [&_strong]:text-primary-foreground">
@@ -113,12 +113,11 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 </section>
               ))}
 
-              <p className="mt-24 text-center font-serif text-2xl text-muted-foreground">— Divya Menon —</p>
             </div>
 
             <nav aria-label="More projects" className="grid gap-4 sm:grid-cols-2">
               {newer ? (
-                <Link href={`/work/${newer.slug}`} className="group rounded-[2rem] bg-card p-7 transition-colors hover:bg-muted">
+                <Link href={`/work/${newer.slug}`} className="group rounded-[0.875rem] bg-card p-7 transition-colors hover:bg-muted">
                   <span className="flex items-center gap-1.5 text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
                     <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
                     Newer project
@@ -131,7 +130,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               {older ? (
                 <Link
                   href={`/work/${older.slug}`}
-                  className="group rounded-[2rem] bg-card p-7 text-right transition-colors hover:bg-muted"
+                  className="group rounded-[0.875rem] bg-card p-7 text-right transition-colors hover:bg-muted"
                 >
                   <span className="flex items-center justify-end gap-1.5 text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
                     Earlier project
@@ -144,7 +143,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </div>
         </article>
       </main>
-      <SiteFooter />
+      <SiteFooter showContact={false} />
     </>
   )
 }

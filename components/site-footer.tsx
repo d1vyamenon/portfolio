@@ -31,7 +31,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps) {
   return (
     <footer id="contact" className="site-container scroll-mt-24 pt-16 pb-10">
       {showContact ? (
-        <div className="grid gap-10 rounded-[3rem] bg-primary px-6 py-12 text-primary-foreground md:px-14 md:py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+        <div className="grid gap-10 rounded-[1rem] bg-primary px-6 py-12 text-primary-foreground md:px-14 md:py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
           <div>
             <p className="text-xs font-medium tracking-[0.12em] text-primary-foreground/80 uppercase">Next stop</p>
             <h2 className="mt-4 font-serif text-6xl leading-[0.95] font-normal tracking-tight text-balance md:text-8xl">

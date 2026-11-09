@@ -30,7 +30,7 @@ export function JourneyStop({ project, index }: JourneyStopProps) {
       <Link
         href={href}
         className={cn(
-          'group relative block w-full rounded-[2.75rem] focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
+          'group relative block w-full rounded-[1.5rem] focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
           !imageFirst && 'md:order-2',
         )}
         tabIndex={-1}

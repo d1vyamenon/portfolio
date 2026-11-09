@@ -26,7 +26,7 @@ export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
     return (
       <div
         className={cn(
-          'relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[2.75rem] bg-card p-[12%]',
+          'relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[1.5rem] bg-card p-[12%]',
           className,
         )}
       >
@@ -47,7 +47,7 @@ export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
       role="img"
       aria-label={`Image placeholder for ${project.title}`}
       className={cn(
-        'flex aspect-[4/3] w-full flex-col items-center justify-center gap-2 rounded-[2.75rem] border-2 border-dashed border-foreground/15 bg-card p-6 text-center text-muted-foreground',
+        'flex aspect-[4/3] w-full flex-col items-center justify-center gap-2 rounded-[1.5rem] border-2 border-dashed border-foreground/15 bg-card p-6 text-center text-muted-foreground',
         className,
       )}
     >

@@ -144,17 +144,17 @@ export default function AboutPage() {
               <li key={h.title} className={h.offset}>
                 <figure
                   className={cn(
-                    'rounded-[1.25rem] bg-[#fbf8f3] p-3 pb-4 shadow-[0_14px_36px_-18px_rgba(36,24,26,0.4)]',
+                    'rounded-[0.875rem] bg-[#fbf8f3] p-3 pb-4 shadow-[0_14px_36px_-18px_rgba(36,24,26,0.4)]',
                     h.tilt,
                   )}
                 >
-                  <div className="aspect-[4/5] overflow-hidden rounded-[0.9rem]">
+                  <div className="aspect-[4/5] overflow-hidden rounded-[0.6rem]">
                     {h.video ? (
-                      <LoopVideo {...h.video} className="rounded-[0.9rem]" />
+                      <LoopVideo {...h.video} className="rounded-[0.6rem]" />
                     ) : h.slideshow ? (
-                      <PhotoCarousel photos={h.slideshow} interval={15} className="rounded-[0.9rem]" />
+                      <PhotoCarousel photos={h.slideshow} interval={15} className="rounded-[0.6rem]" />
                     ) : (
-                      <Photo src={h.photo.src} label={h.photo.label} className="rounded-[0.9rem]" />
+                      <Photo src={h.photo.src} label={h.photo.label} className="rounded-[0.6rem]" />
                     )}
                   </div>
                   <figcaption className="pt-4 text-center font-serif text-2xl italic">{h.title}</figcaption>
