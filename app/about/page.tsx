@@ -19,8 +19,8 @@ export const metadata: Metadata = {
 // ---------------------------------------------------------------------------
 
 const portrait = {
-  src: '/about/divya-portrait.jpg',
-  label: 'Divya smiling, crouched on a low concrete wall at UC San Diego in her graduation stole, holding her cap',
+  src: '/about/divya-japan.jpg',
+  label: 'Divya smiling over her shoulder on a quiet, rain-wet residential street lined with trees and power lines',
 }
 
 type Hobby = {
