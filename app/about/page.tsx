@@ -1,62 +1,99 @@
 import type { Metadata } from 'next'
-import { Download } from 'lucide-react'
+import Image from 'next/image'
+import { Camera } from 'lucide-react'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
+import { cn } from '@/lib/utils'
 import { site } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'About Divya Menon: education, experience and skills in UX research and design.',
+  description: 'A little about Divya Menon outside of design: bouldering, crocheting, cooking and more.',
 }
 
-const education = [
+// ---------------------------------------------------------------------------
+// Edit everything about this page here.
+// Photos: drop files in /public/about and set `src` (e.g. '/about/bouldering.jpg').
+// Anything with `placeholder: true` shows as a soft "fill me in" note until you edit it.
+// ---------------------------------------------------------------------------
+
+const portrait = { src: '', label: 'A candid photo of you' }
+
+const hobbies = [
   {
-    school: 'Carnegie Mellon University',
-    degree: 'Master of Human-Computer Interaction',
-    when: 'Expected Aug 2027',
-    detail:
-      'Coursework in progress: User-Centred Research and Evaluation, Interaction Design Fundamentals, Programming Interactive Experiences, Research Issues in Game Development in XR.',
+    title: 'Bouldering',
+    text: 'Where I go to problem-solve with my whole body instead of a screen.',
+    photo: { src: '', label: 'You on the wall' },
+    tilt: '-rotate-2',
   },
   {
-    school: 'University of California, San Diego',
-    degree: 'B.S. Cognitive Science, specialization in Design & Interaction',
-    when: 'Jun 2026',
-    detail: 'Coursework: Interaction Design, Sustainable Development Design, Data Science in Practice.',
+    title: 'Crocheting',
+    text: 'Slow, repetitive and very satisfying when a pattern finally clicks.',
+    photo: { src: '', label: 'Something you made' },
+    tilt: 'rotate-1',
   },
   {
-    school: 'Houston Community College',
-    degree: 'A.S. Health Sciences, Highest Honors',
-    when: 'May 2023',
+    title: 'Cooking',
+    text: 'Mostly recipes I found on social media. Results vary, and that’s half the fun.',
+    photo: { src: '', label: 'A dish you’re proud of' },
+    tilt: '-rotate-1',
+  },
+  {
+    title: 'Catching up on a show',
+    text: 'The best way to end a long week.',
+    photo: { src: '', label: 'Your current comfort show' },
+    tilt: 'rotate-2',
   },
 ]
 
-const experience = [
-  { role: 'UX Accessibility Intern', org: 'OLI · Torus', when: 'Aug 2026 — Now' },
-  { role: 'UX Research Associate', org: 'EPAM Systems', when: 'Apr — Jul 2026' },
-  { role: 'Product Design Intern', org: 'Cognite', when: 'Jun — Sep 2025' },
-  { role: 'UI/UX Development Consultant', org: 'AMG Invest', when: 'Aug 2024 — Apr 2025' },
+const currently = [
+  { label: 'Watching', value: 'Add the show you’re watching', placeholder: true },
+  { label: 'Crocheting', value: 'Add your current project', placeholder: true },
+  { label: 'Cooking', value: 'Add the last recipe you tried', placeholder: true },
+  { label: 'Listening to', value: 'Add a song, album or podcast', placeholder: true },
 ]
 
-const skills = [
-  {
-    group: 'UX research',
-    items: ['User interviews', 'Heuristic evaluations', 'Journey mapping', 'Concept validation', 'Usability testing'],
-  },
-  {
-    group: 'UI/UX design',
-    items: ['Workflows', 'Wireframes', 'Interface design', 'Interaction design', 'Visual design'],
-  },
-  {
-    group: 'Software & AI',
-    items: ['Figma', 'Dovetail', 'Miro', 'Figma Make', 'Gemini', 'Cursor', 'Python', 'JavaScript', 'Adobe Creative Cloud'],
-  },
+const funFacts = [
+  { text: 'Add a fun fact about yourself', placeholder: true },
+  { text: 'Add something people are surprised to learn about you', placeholder: true },
+  { text: 'Add a small thing that makes your day', placeholder: true },
 ]
 
-function SectionLabel({ id, children }: { id: string; children: React.ReactNode }) {
+// ---------------------------------------------------------------------------
+
+function Photo({ src, label, className }: { src: string; label: string; className?: string }) {
+  if (src) {
+    return (
+      <Image
+        src={src}
+        alt={label}
+        width={900}
+        height={1100}
+        className={cn('h-full w-full object-cover', className)}
+        sizes="(min-width: 1024px) 400px, 90vw"
+      />
+    )
+  }
   return (
-    <h2 id={id} className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">
+    <div
+      className={cn(
+        'flex h-full w-full flex-col items-center justify-center gap-2 border-2 border-dashed border-foreground/15 bg-card p-4 text-center text-muted-foreground',
+        className,
+      )}
+    >
+      <Camera className="size-6 opacity-60" aria-hidden="true" />
+      <span className="text-sm font-medium text-pretty">{label}</span>
+    </div>
+  )
+}
+
+function Fill({ children, placeholder }: { children: React.ReactNode; placeholder?: boolean }) {
+  return placeholder ? (
+    <span className="text-muted-foreground italic underline decoration-accent/40 decoration-dashed underline-offset-4">
       {children}
-    </h2>
+    </span>
+  ) : (
+    <>{children}</>
   )
 }
 
@@ -64,98 +101,112 @@ export default function AboutPage() {
   return (
     <>
       <SiteHeader />
-      <main className="site-container pt-14 pb-12 md:pt-24">
-        <section aria-labelledby="about-title" className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-20">
-          <div>
-            <p className="text-xs font-medium tracking-[0.12em] text-muted-foreground uppercase">About me</p>
-            <h1
-              id="about-title"
-              className="mt-6 text-5xl font-serif leading-[0.95] font-normal tracking-tight text-balance md:text-7xl"
-            >
-              Cognitive science, <span className="text-accent italic">applied</span>.
-            </h1>
+      <main className="site-container pb-12">
+        {/* Intro */}
+        <section
+          aria-labelledby="about-title"
+          className="grid items-center gap-12 pt-12 md:pt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-20"
+        >
+          <div className="relative mx-auto w-full max-w-sm">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 translate-x-3 translate-y-3 rounded-[46%_54%_42%_58%/52%_44%_56%_48%] border-2 border-accent/30"
+            />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[46%_54%_42%_58%/52%_44%_56%_48%]">
+              <Photo src={portrait.src} label={portrait.label} className="rounded-[inherit]" />
+            </div>
           </div>
-          <div className="space-y-4 text-lg leading-relaxed text-pretty text-foreground/80 lg:pt-12">
-            <p>
-              I’m a UX researcher and designer with experience in everything from brand development to usability
-              testing. My background in cognitive science gives me a unique perspective on human-centered design: I
-              want to understand how people think before deciding what they should see.
-            </p>
-            <p>
-              I’m now pursuing a Master of Human-Computer Interaction at Carnegie Mellon, and I’m searching for my
-              place in the UX research and product design space. I look forward to learning about you and your
-              company!
-            </p>
-            <a
-              href={site.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8! inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
-            >
-              <Download className="size-4" aria-hidden="true" />
-              Download my résumé
-            </a>
+
+          <div>
+            <h1 id="about-title" className="font-serif text-5xl leading-[1] tracking-tight text-balance md:text-7xl">
+              Nice to meet <span className="text-accent italic">you</span>
+            </h1>
+            <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
+              <p>
+                I’m Divya. I studied cognitive science because I’ve always been curious about why people think the way
+                they do, and I ended up in design because I wanted to do something with the answers.
+              </p>
+              <p>
+                Outside of work, I’m usually doing something with my hands: climbing, crocheting, or attempting a
+                recipe I saw online. I like projects where you can see your progress, and I think that’s a big part of
+                why I love iterating on designs too.
+              </p>
+            </div>
           </div>
         </section>
 
-        <div className="mt-24 grid gap-16 lg:grid-cols-2 lg:gap-20">
-          <section aria-labelledby="experience-title">
-            <SectionLabel id="experience-title">Experience</SectionLabel>
-            <ol className="mt-6 space-y-3">
-              {experience.map((job) => (
-                <li key={job.org} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 rounded-[1.75rem] bg-card px-6 py-5">
-                  <div>
-                    <p className="text-lg font-semibold tracking-tight">{job.role}</p>
-                    <p className="text-muted-foreground">{job.org}</p>
+        {/* Hobbies as a loose row of snapshots */}
+        <section aria-labelledby="offline-title" className="mt-28 md:mt-36">
+          <h2 id="offline-title" className="font-serif text-4xl tracking-tight md:text-5xl">
+            When I’m not designing
+          </h2>
+          <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+            {hobbies.map((h) => (
+              <li key={h.title}>
+                <figure
+                  className={cn(
+                    'rounded-[1.25rem] bg-[#fbf8f3] p-3 pb-5 shadow-[0_12px_32px_-18px_rgba(36,24,26,0.35)] transition-transform duration-300 hover:rotate-0',
+                    h.tilt,
+                  )}
+                >
+                  <div className="aspect-[4/5] overflow-hidden rounded-[0.9rem]">
+                    <Photo src={h.photo.src} label={h.photo.label} className="rounded-[0.9rem]" />
                   </div>
-                  <p className="text-xs font-medium tracking-wider text-muted-foreground uppercase">{job.when}</p>
+                  <figcaption className="px-2 pt-4">
+                    <span className="block font-serif text-2xl">{h.title}</span>
+                    <span className="mt-1 block leading-snug text-pretty text-muted-foreground">{h.text}</span>
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Currently + fun facts */}
+        <section className="mt-28 grid gap-6 md:mt-36 lg:grid-cols-2">
+          <div aria-labelledby="currently-title" className="rounded-[2.5rem] bg-card p-8 md:p-12">
+            <h2 id="currently-title" className="font-serif text-4xl tracking-tight">
+              Lately
+            </h2>
+            <dl className="mt-8 space-y-5">
+              {currently.map((c) => (
+                <div key={c.label} className="grid gap-1 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-4">
+                  <dt className="font-serif text-lg text-accent italic">{c.label}</dt>
+                  <dd className="text-lg leading-snug">
+                    <Fill placeholder={c.placeholder}>{c.value}</Fill>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div aria-labelledby="facts-title" className="rounded-[2.5rem] bg-primary p-8 text-primary-foreground md:p-12">
+            <h2 id="facts-title" className="font-serif text-4xl tracking-tight">
+              A few fun facts
+            </h2>
+            <ol className="mt-8 space-y-5">
+              {funFacts.map((f, i) => (
+                <li key={i} className="flex gap-4 text-lg leading-snug">
+                  <span aria-hidden="true" className="font-serif text-2xl leading-none italic">
+                    {i + 1}.
+                  </span>
+                  <span className={f.placeholder ? 'italic underline decoration-primary-foreground/50 decoration-dashed underline-offset-4' : undefined}>
+                    {f.text}
+                  </span>
                 </li>
               ))}
             </ol>
-          </section>
-
-          <section aria-labelledby="education-title">
-            <SectionLabel id="education-title">Education</SectionLabel>
-            <ul className="mt-6 space-y-3">
-              {education.map((ed) => (
-                <li key={ed.school} className="rounded-[1.75rem] bg-card px-6 py-5">
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                    <p className="text-lg font-semibold tracking-tight">{ed.school}</p>
-                    <p className="text-xs font-medium tracking-wider text-muted-foreground uppercase">{ed.when}</p>
-                  </div>
-                  <p className="text-muted-foreground">{ed.degree}</p>
-                  {ed.detail ? <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{ed.detail}</p> : null}
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
-
-        <section aria-labelledby="skills-title" className="mt-24">
-          <SectionLabel id="skills-title">Skills & tools</SectionLabel>
-          <div className="mt-6 grid gap-8 md:grid-cols-3">
-            {skills.map((s) => (
-              <div key={s.group} className="rounded-[2rem] bg-card p-7">
-                <h3 className="font-semibold">{s.group}</h3>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {s.items.map((item) => (
-                    <li
-                      key={item}
-                      className="rounded-full bg-background px-3.5 py-1.5 text-xs font-medium text-foreground/75"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
           </div>
         </section>
 
-        <section aria-labelledby="offline-title" className="mt-24 grid gap-6 rounded-[2.5rem] bg-secondary p-8 md:p-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)] lg:gap-20">
-          <SectionLabel id="offline-title">When I’m not designing</SectionLabel>
-          <p className="max-w-2xl font-serif text-3xl leading-snug font-normal tracking-tight text-pretty md:text-4xl">
-            You’ll find me bouldering, crocheting, cooking recipes I found on social media, or catching up on a show.
+        {/* Sign-off */}
+        <section className="mt-28 text-center md:mt-36">
+          <p className="mx-auto max-w-2xl font-serif text-3xl leading-snug text-balance md:text-4xl">
+            I’d love to hear what you’re working on, or your best recipe recommendation.{' '}
+            <a href={`mailto:${site.email}`} className="text-accent italic underline decoration-accent/40 underline-offset-4 hover:decoration-accent">
+              Say hi
+            </a>
+            .
           </p>
         </section>
       </main>
