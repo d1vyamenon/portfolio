@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 // ---------------------------------------------------------------------------
 
 const portrait = {
-  src: '/about/divya-japan.jpg',
-  label: 'Divya smiling over her shoulder on a quiet, rain-wet residential street lined with trees and power lines',
+  src: '/about/divya-bench.jpg',
+  label: 'Divya sitting on a wooden bench under a covered wooden shelter, looking off to the side',
 }
 
 type Hobby = {
