@@ -61,6 +61,11 @@ export type Project = {
   /** Homepage image: a logo or related graphic PNG in /public/projects, e.g. '/projects/cognite.png'. */
   image?: string
   imageAlt?: string
+  /**
+   * 'logo' (default): a logo on a white background, blended into the card so the white disappears.
+   * 'tile': a square app-icon style image, shown as a rounded tile.
+   */
+  imageStyle?: 'logo' | 'tile'
   /** Name used in the homepage placeholder and default alt text. Defaults to `org`. */
   logoName?: string
   /** Big title and subtitle in the case study's colored header band. */
@@ -87,6 +92,9 @@ const projectsChronological: Project[] = [
     tags: ['User research', 'Usability testing', 'UI redesign'],
     tools: ['Figma'],
     skills: ['User Research', 'Usability Testing', 'UX Design'],
+    image: '/projects/instagram.png',
+    imageAlt: 'Instagram logo',
+    imageStyle: 'tile',
     cover: { icon: 'phone', tone: 'plum' },
     band: { title: 'Stories', subtitle: 'An Instagram case study' },
     overview:
@@ -192,6 +200,8 @@ const projectsChronological: Project[] = [
     tags: ['Brand development', 'Logo design', 'Heuristic evaluation'],
     tools: ['Adobe Illustrator', 'Figma'],
     skills: ['Brand Development', 'Logo Creation', 'UX Research'],
+    image: '/projects/amg-invest.png',
+    imageAlt: 'AMG Invest logo',
     cover: { icon: 'growth', tone: 'moss' },
     band: { title: 'AMG Invest', subtitle: 'Brand identity' },
     overview:
@@ -301,6 +311,8 @@ const projectsChronological: Project[] = [
     tags: ['Usability testing', 'Heuristic evaluation', 'Research planning'],
     tools: ['Dovetail', 'Figma', 'Miro'],
     skills: ['Usability Testing', 'User Research', 'Heuristic Evaluation'],
+    image: '/projects/cognite.png',
+    imageAlt: 'Cognite logo',
     cover: { icon: 'pointer', tone: 'slate' },
     band: { title: 'Cognite', subtitle: 'Atlas AI Usability Testing' },
     overview:
@@ -460,6 +472,8 @@ const projectsChronological: Project[] = [
     tags: ['Personas', 'Workflows', 'Lo-fi design'],
     tools: ['Dovetail', 'Figma', 'Miro', 'Cursor'],
     skills: ['User Personas', 'Wireframing', 'Lo-Fi Design'],
+    image: '/projects/cognite.png',
+    imageAlt: 'Cognite logo',
     cover: { icon: 'lightbulb', tone: 'ember' },
     band: { title: 'Cognite', subtitle: 'Future Product Ideation' },
     overview:
@@ -538,6 +552,9 @@ const projectsChronological: Project[] = [
       'Led an end-to-end research initiative on how energy enterprises adopt AI, interviewing senior executives about trust, friction and human agency.',
     tags: ['Executive interviews', 'Synthesis', 'Evaluation framework'],
     skills: ['User Interviews', 'Qualitative Synthesis', 'Research Strategy'],
+    image: '/projects/epam.png',
+    imageAlt: 'EPAM Systems logo',
+    imageStyle: 'tile',
     cover: { icon: 'interviews', tone: 'plum' },
     band: { title: 'EPAM Systems', subtitle: 'Enterprise AI Adoption Research' },
     overview:
@@ -609,6 +626,8 @@ const projectsChronological: Project[] = [
       'Auditing instructor workflows on an online learning platform for WCAG compliance, then turning the findings into accessible keyboard flows and a modular filtering system.',
     tags: ['WCAG audit', 'Keyboard flows', 'Interaction design'],
     skills: ['Accessibility Evaluation', 'Interaction Design', 'Cross-functional Collaboration'],
+    image: '/projects/oli-torus.png',
+    imageAlt: 'OLI Torus logo',
     cover: { icon: 'accessibility', tone: 'slate' },
     band: { title: 'OLI Torus', subtitle: 'Instructor Accessibility Audit' },
     overview:

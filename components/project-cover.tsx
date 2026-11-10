@@ -24,19 +24,25 @@ export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
   const name = project.logoName ?? project.org
 
   if (project.image) {
+    const tile = project.imageStyle === 'tile'
     return (
       <div
         className={cn(
-          'relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[1.5rem] bg-card p-[12%]',
+          'relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[1.5rem] bg-card',
+          tile ? 'p-[14%]' : 'p-[16%]',
           className,
         )}
       >
         <Image
           src={withBase(project.image)}
           alt={project.imageAlt ?? `${name} logo`}
-          width={1200}
-          height={900}
-          className="h-full w-full object-contain"
+          width={1000}
+          height={1000}
+          className={cn(
+            'h-full w-full object-contain',
+            // White logo backgrounds take on the card color; tiles keep their own background.
+            tile ? 'w-auto max-w-full rounded-[22%] shadow-[0_12px_30px_-14px_rgba(36,24,26,0.45)]' : 'mix-blend-multiply',
+          )}
           sizes={sizes}
         />
       </div>
