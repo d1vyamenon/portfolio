@@ -200,7 +200,7 @@ const projectsChronological: Project[] = [
     tags: ['Brand development', 'Logo design', 'Heuristic evaluation'],
     tools: ['Adobe Illustrator', 'Figma'],
     skills: ['Brand Development', 'Logo Creation', 'UX Research'],
-    image: '/projects/amg-invest.png',
+    image: '/projects/amg-invest-logo.png',
     imageAlt: 'AMG Invest logo',
     cover: { icon: 'growth', tone: 'moss' },
     band: { title: 'AMG Invest', subtitle: 'Brand identity' },
