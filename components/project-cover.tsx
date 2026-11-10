@@ -13,10 +13,10 @@ type ProjectCoverProps = {
 /**
  * The image beside each project on the homepage.
  *
- * To add one, put a PNG (a company logo or a related graphic, ideally with a
+ * To add one, put an SVG or PNG (a company logo or a related graphic, with a
  * transparent background) in /public/projects and set `image` and `imageAlt`
- * on the project in lib/projects.ts. It's shown whole (never cropped), centered
- * on a soft card, so logos of any shape fit.
+ * on the project in lib/projects.ts. It's shown whole (never cropped) and centered
+ * directly on the page, so logos of any shape fit.
  *
  * Until then, a labeled placeholder box shows where it will go.
  */
@@ -25,11 +25,12 @@ export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
 
   if (project.image) {
     const tile = project.imageStyle === 'tile'
+    // No box behind the logo: it sits right on the page, centered in the same space a card would take.
     return (
       <div
         className={cn(
-          'relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[1.5rem] bg-card',
-          tile ? 'p-[14%]' : 'p-[16%]',
+          'relative flex aspect-[4/3] w-full items-center justify-center',
+          tile ? 'p-[22%]' : 'p-[12%]',
           className,
         )}
       >
@@ -40,8 +41,7 @@ export function ProjectCover({ project, className, sizes }: ProjectCoverProps) {
           height={1000}
           className={cn(
             'h-full w-full object-contain',
-            // White logo backgrounds take on the card color; tiles keep their own background.
-            tile ? 'w-auto max-w-full rounded-[22%] shadow-[0_12px_30px_-14px_rgba(36,24,26,0.45)]' : 'mix-blend-multiply',
+            tile && 'w-auto max-w-full rounded-[22%] shadow-[0_12px_30px_-14px_rgba(36,24,26,0.45)]',
           )}
           sizes={sizes}
         />

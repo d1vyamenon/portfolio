@@ -62,8 +62,8 @@ export type Project = {
   image?: string
   imageAlt?: string
   /**
-   * 'logo' (default): a logo on a white background, blended into the card so the white disappears.
-   * 'tile': a square app-icon style image, shown as a rounded tile.
+   * 'logo' (default): a logo with a transparent background (SVG or PNG).
+   * 'tile': a square app-icon style image, shown smaller with rounded corners.
    */
   imageStyle?: 'logo' | 'tile'
   /** Name used in the homepage placeholder and default alt text. Defaults to `org`. */
@@ -311,7 +311,7 @@ const projectsChronological: Project[] = [
     tags: ['Usability testing', 'Heuristic evaluation', 'Research planning'],
     tools: ['Dovetail', 'Figma', 'Miro'],
     skills: ['Usability Testing', 'User Research', 'Heuristic Evaluation'],
-    image: '/projects/cognite.png',
+    image: '/projects/cognite.svg',
     imageAlt: 'Cognite logo',
     cover: { icon: 'pointer', tone: 'slate' },
     band: { title: 'Cognite', subtitle: 'Atlas AI Usability Testing' },
@@ -472,7 +472,7 @@ const projectsChronological: Project[] = [
     tags: ['Personas', 'Workflows', 'Lo-fi design'],
     tools: ['Dovetail', 'Figma', 'Miro', 'Cursor'],
     skills: ['User Personas', 'Wireframing', 'Lo-Fi Design'],
-    image: '/projects/cognite.png',
+    image: '/projects/cognite.svg',
     imageAlt: 'Cognite logo',
     cover: { icon: 'lightbulb', tone: 'ember' },
     band: { title: 'Cognite', subtitle: 'Future Product Ideation' },
@@ -552,9 +552,8 @@ const projectsChronological: Project[] = [
       'Led an end-to-end research initiative on how energy enterprises adopt AI, interviewing senior executives about trust, friction and human agency.',
     tags: ['Executive interviews', 'Synthesis', 'Evaluation framework'],
     skills: ['User Interviews', 'Qualitative Synthesis', 'Research Strategy'],
-    image: '/projects/epam.png',
+    image: '/projects/epam.svg',
     imageAlt: 'EPAM Systems logo',
-    imageStyle: 'tile',
     cover: { icon: 'interviews', tone: 'plum' },
     band: { title: 'EPAM Systems', subtitle: 'Enterprise AI Adoption Research' },
     overview:
@@ -626,7 +625,7 @@ const projectsChronological: Project[] = [
       'Auditing instructor workflows on an online learning platform for WCAG compliance, then turning the findings into accessible keyboard flows and a modular filtering system.',
     tags: ['WCAG audit', 'Keyboard flows', 'Interaction design'],
     skills: ['Accessibility Evaluation', 'Interaction Design', 'Cross-functional Collaboration'],
-    image: '/projects/oli-torus.png',
+    image: '/projects/oli-torus.svg',
     imageAlt: 'OLI Torus logo',
     cover: { icon: 'accessibility', tone: 'slate' },
     band: { title: 'OLI Torus', subtitle: 'Instructor Accessibility Audit' },
