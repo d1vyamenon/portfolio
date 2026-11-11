@@ -139,50 +139,25 @@ export default function AboutPage() {
             </h1>
             <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
               <p>
-                I’m currently a Master of Human-Computer Interaction student at Carnegie Mellon University. Outside of
-                being a student and designer, I have a few other obsessions.
+                I’m a Master of Human-Computer Interaction student at Carnegie Mellon University. Before CMU, I earned
+                my B.S. in Cognitive Science at UC San Diego, and before that, an associate degree in Health Sciences
+                from Houston Community College.
               </p>
               <p>
-                After a long day of work and classes, you’ll probably find me at a bouldering gym. When I’m not tearing
-                up my hands trying to climb little plastic rocks, I love to craft, especially jewelry and accessories!
+                Along the way, I’ve worked on both sides of the process: designing interfaces and brand identities, and
+                leading research for enterprise teams, from usability testing an industrial AI product to interviewing
+                energy executives about how they adopt AI.
               </p>
               <p>
-                I’m also a trained Bharatanatyam (Indian classical) dancer, and I often re-learn excerpts of past
-                dances as a way to destress.
+                Now I want to take the way science taught me to think (asking questions, testing assumptions and
+                following the evidence) and apply it to design.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Personal: snapshots of the hobbies the intro mentions */}
-        <section aria-label="Things I love outside of design" className="mt-24 md:mt-32">
-          <ul className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-14">
-            {hobbies.map((h) => (
-              <li key={h.title} className={h.offset}>
-                <figure
-                  className={cn(
-                    'rounded-[0.875rem] bg-[#fbf8f3] p-3 pb-4 shadow-[0_14px_36px_-18px_rgba(36,24,26,0.4)]',
-                    h.tilt,
-                  )}
-                >
-                  <div className="aspect-[4/5] overflow-hidden rounded-[0.6rem]">
-                    {h.video ? (
-                      <LoopVideo {...h.video} className="rounded-[0.6rem]" />
-                    ) : h.slideshow ? (
-                      <PhotoCarousel photos={h.slideshow} interval={15} className="rounded-[0.6rem]" />
-                    ) : (
-                      <Photo src={h.photo.src} label={h.photo.label} className="rounded-[0.6rem]" />
-                    )}
-                  </div>
-                  <figcaption className="pt-4 text-center font-serif text-2xl italic">{h.title}</figcaption>
-                </figure>
-              </li>
-            ))}
-          </ul>
-        </section>
-
         {/* Professional: how I design + what I'm looking for, grouped in one panel */}
-        <div className="mt-28 rounded-[1.75rem] bg-card px-6 py-14 md:mt-36 md:px-14 md:py-20">
+        <div className="mt-24 rounded-[1.75rem] bg-card px-6 py-14 md:mt-32 md:px-14 md:py-20">
           {/* How I design: core principles */}
           <section aria-labelledby="principles-title">
             <h2 id="principles-title" className="font-serif text-4xl tracking-tight md:text-5xl">
@@ -227,6 +202,50 @@ export default function AboutPage() {
             </div>
           </section>
         </div>
+
+        {/* Outside of design: a short lead-in, then the polaroids */}
+        <section aria-labelledby="outside-title" className="mt-28 md:mt-36">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-20">
+            <h2 id="outside-title" className="font-serif text-4xl leading-tight tracking-tight text-balance md:text-5xl">
+              Outside of <span className="text-accent italic">design</span>
+            </h2>
+            <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
+              <p>
+                After a long day of work and classes, you’ll probably find me at a bouldering gym. When I’m not tearing
+                up my hands trying to climb little plastic rocks, I love to craft, especially jewelry and accessories!
+              </p>
+              <p>
+                I’m also a trained Bharatanatyam (Indian classical) dancer, and I often re-learn excerpts of past
+                dances as a way to destress.
+              </p>
+            </div>
+          </div>
+          <div className="mt-16 md:mt-20">
+            <ul className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-14">
+              {hobbies.map((h) => (
+                <li key={h.title} className={h.offset}>
+                  <figure
+                    className={cn(
+                      'rounded-[0.875rem] bg-[#fbf8f3] p-3 pb-4 shadow-[0_14px_36px_-18px_rgba(36,24,26,0.4)]',
+                      h.tilt,
+                    )}
+                  >
+                    <div className="aspect-[4/5] overflow-hidden rounded-[0.6rem]">
+                      {h.video ? (
+                        <LoopVideo {...h.video} className="rounded-[0.6rem]" />
+                      ) : h.slideshow ? (
+                        <PhotoCarousel photos={h.slideshow} interval={15} className="rounded-[0.6rem]" />
+                      ) : (
+                        <Photo src={h.photo.src} label={h.photo.label} className="rounded-[0.6rem]" />
+                      )}
+                    </div>
+                    <figcaption className="pt-4 text-center font-serif text-2xl italic">{h.title}</figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
       </main>
       <SiteFooter showContact={false} />
     </>
