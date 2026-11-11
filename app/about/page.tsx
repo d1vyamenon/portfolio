@@ -155,38 +155,30 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* How I design: heading on the left, principles as a numbered list on the right */}
-        <section
-          aria-labelledby="principles-title"
-          className="mt-28 grid gap-8 md:mt-36 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-20"
-        >
+        {/* How I design: heading, then the principles in three columns */}
+        <section aria-labelledby="principles-title" className="mt-28 md:mt-36">
           <h2 id="principles-title" className="font-serif text-4xl leading-tight tracking-tight text-balance md:text-5xl">
             How I <span className="text-accent italic">design</span>
           </h2>
-          <ol className="max-w-2xl divide-y divide-foreground/10 border-y border-foreground/10">
+          <ol className="mt-10 grid gap-10 md:grid-cols-3 md:gap-12">
             {principles.map((p, i) => (
-              <li key={p.title} className="grid gap-x-6 gap-y-2 py-8 sm:grid-cols-[3rem_minmax(0,1fr)]">
+              <li key={p.title} className="border-t border-foreground/15 pt-6">
                 <span aria-hidden="true" className="font-serif text-3xl leading-none text-accent italic">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <div>
-                  <h3 className="font-serif text-2xl leading-tight text-balance md:text-3xl">{p.title}</h3>
-                  <p className="mt-3 text-lg leading-relaxed text-pretty text-foreground/80">{p.text}</p>
-                </div>
+                <h3 className="mt-4 font-serif text-2xl leading-tight text-balance">{p.title}</h3>
+                <p className="mt-3 leading-relaxed text-pretty text-foreground/80 md:text-lg">{p.text}</p>
               </li>
             ))}
           </ol>
         </section>
 
         {/* Career goals */}
-        <section
-          aria-labelledby="looking-title"
-          className="mt-28 grid gap-8 md:mt-36 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-20"
-        >
+        <section aria-labelledby="looking-title" className="mt-28 md:mt-36">
           <h2 id="looking-title" className="font-serif text-4xl leading-tight tracking-tight text-balance md:text-5xl">
             What I’m <span className="text-accent italic">looking for</span>
           </h2>
-          <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
+          <div className="mt-8 max-w-3xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
             <p>
               I’m looking for <strong className="font-semibold">product design</strong> and{' '}
               <strong className="font-semibold">UX research</strong> roles. I’m especially drawn to healthcare, but I’m
@@ -206,11 +198,11 @@ export default function AboutPage() {
 
         {/* Outside of design: a short lead-in, then the polaroids */}
         <section aria-labelledby="outside-title" className="mt-28 md:mt-36">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-20">
+          <div>
             <h2 id="outside-title" className="font-serif text-4xl leading-tight tracking-tight text-balance md:text-5xl">
               Outside of <span className="text-accent italic">design</span>
             </h2>
-            <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
+            <div className="mt-8 max-w-3xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
               <p>
                 After a long day of work and classes, you’ll probably find me at a bouldering gym. When I’m not tearing
                 up my hands trying to climb little plastic rocks, I love to craft, especially jewelry and accessories!
