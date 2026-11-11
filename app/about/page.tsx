@@ -24,7 +24,7 @@ const portrait = {
   label: 'Divya sitting on a wooden bench under a covered wooden shelter, looking off to the side',
 }
 
-// How I design: core principles (shown as numbered cards).
+// How I design: core principles (shown as a numbered list).
 const principles = [
   {
     title: 'Design for the user, first and always',
@@ -155,52 +155,54 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Professional: how I design + what I'm looking for, grouped in one panel */}
-        <div className="mt-24 rounded-[1.75rem] bg-card px-6 py-14 md:mt-32 md:px-14 md:py-20">
-          {/* How I design: core principles */}
-          <section aria-labelledby="principles-title">
-            <h2 id="principles-title" className="font-serif text-4xl tracking-tight md:text-5xl">
-              How I <span className="text-accent italic">design</span>
-            </h2>
-            <ol className="mt-10 grid gap-4 md:grid-cols-3">
-              {principles.map((p, i) => (
-                <li key={p.title} className="rounded-[1rem] bg-background p-7 md:p-8">
-                  <span aria-hidden="true" className="font-serif text-3xl text-accent italic">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <h3 className="mt-4 font-serif text-2xl leading-tight text-balance">{p.title}</h3>
-                  <p className="mt-3 leading-relaxed text-pretty text-foreground/80">{p.text}</p>
-                </li>
-              ))}
-            </ol>
-          </section>
+        {/* How I design: heading on the left, principles as a numbered list on the right */}
+        <section
+          aria-labelledby="principles-title"
+          className="mt-28 grid gap-8 md:mt-36 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-20"
+        >
+          <h2 id="principles-title" className="font-serif text-4xl leading-tight tracking-tight text-balance md:text-5xl">
+            How I <span className="text-accent italic">design</span>
+          </h2>
+          <ol className="max-w-2xl divide-y divide-foreground/10 border-y border-foreground/10">
+            {principles.map((p, i) => (
+              <li key={p.title} className="grid gap-x-6 gap-y-2 py-8 sm:grid-cols-[3rem_minmax(0,1fr)]">
+                <span aria-hidden="true" className="font-serif text-3xl leading-none text-accent italic">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <h3 className="font-serif text-2xl leading-tight text-balance md:text-3xl">{p.title}</h3>
+                  <p className="mt-3 text-lg leading-relaxed text-pretty text-foreground/80">{p.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-          {/* Career goals */}
-          <section
-            aria-labelledby="looking-title"
-            className="mt-16 grid gap-8 border-t border-foreground/10 pt-16 md:mt-20 md:pt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-20"
-          >
-            <h2 id="looking-title" className="font-serif text-4xl leading-tight tracking-tight text-balance md:text-5xl">
-              What I’m <span className="text-accent italic">looking for</span>
-            </h2>
-            <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
-              <p>
-                I’m looking for <strong className="font-semibold">product design</strong> and{' '}
-                <strong className="font-semibold">UX research</strong> roles. I’m especially drawn to healthcare, but I’m
-                excited by meaningful problems in any field.
-              </p>
-              <p>
-                One of my favorite parts of design is finding problems no one knew existed. Solving them brings users a
-                kind of satisfaction they never expected. I love digging deep to understand why core usability and
-                functionality issues surface in the first place.
-              </p>
-              <p>
-                I enjoy designing both in the physical world and on screens, and I especially love finding ways to
-                connect the two.
-              </p>
-            </div>
-          </section>
-        </div>
+        {/* Career goals */}
+        <section
+          aria-labelledby="looking-title"
+          className="mt-28 grid gap-8 md:mt-36 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-20"
+        >
+          <h2 id="looking-title" className="font-serif text-4xl leading-tight tracking-tight text-balance md:text-5xl">
+            What I’m <span className="text-accent italic">looking for</span>
+          </h2>
+          <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
+            <p>
+              I’m looking for <strong className="font-semibold">product design</strong> and{' '}
+              <strong className="font-semibold">UX research</strong> roles. I’m especially drawn to healthcare, but I’m
+              excited by meaningful problems in any field.
+            </p>
+            <p>
+              One of my favorite parts of design is finding problems no one knew existed. Solving them brings users a
+              kind of satisfaction they never expected. I love digging deep to understand why core usability and
+              functionality issues surface in the first place.
+            </p>
+            <p>
+              I enjoy designing both in the physical world and on screens, and I especially love finding ways to
+              connect the two.
+            </p>
+          </div>
+        </section>
 
         {/* Outside of design: a short lead-in, then the polaroids */}
         <section aria-labelledby="outside-title" className="mt-28 md:mt-36">
