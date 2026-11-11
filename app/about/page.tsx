@@ -140,8 +140,8 @@ export default function AboutPage() {
             <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
               <p>
                 I’m a Master of Human-Computer Interaction student at Carnegie Mellon University. Before CMU, I completed
-                my B.S. in Cognitive Science at UC San Diego and an associate degree in Health Sciences at Houston
-                Community College.
+                my B.S. in Cognitive Science at UC San Diego and my A.S. in Health Sciences at Houston Community
+                College.
               </p>
               <p>
                 Along the way, I’ve worked on many sides of the design process, from developing brand identities and
