@@ -14,7 +14,7 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Divya Menon — UX Researcher & Designer',
+    default: 'Divya Menon — Product Designer & UX Researcher',
     template: '%s — Divya Menon',
   },
   description:

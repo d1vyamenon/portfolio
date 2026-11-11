@@ -10,7 +10,7 @@ import { withBase } from '@/lib/base-path'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'A little about Divya Menon outside of design: bouldering, crafting jewelry, and Bharatanatyam.',
+  description: 'About Divya Menon: how she designs, the product design and UX research roles she’s looking for, and life outside design.',
 }
 
 // ---------------------------------------------------------------------------
@@ -23,6 +23,22 @@ const portrait = {
   src: '/about/divya-bench.jpg',
   label: 'Divya sitting on a wooden bench under a covered wooden shelter, looking off to the side',
 }
+
+// How I design: core principles (shown as numbered cards).
+const principles = [
+  {
+    title: 'Design for the user, first and always',
+    text: 'Balancing business goals with user satisfaction is always tricky, but when the user is at the center of the design process, the rest tends to fall into place.',
+  },
+  {
+    title: 'Design for good',
+    text: 'Ethics matter to me as a designer and researcher. I’m always looking for ways to improve an existing experience, or to create an entirely new one, for the benefit of the user. Designing traps and manipulative interfaces goes against my user-centered philosophy.',
+  },
+  {
+    title: 'Design for everyone',
+    text: 'Accessibility is incredibly important, especially in a digital age where oversights are becoming easier to ignore. A person’s physical or mental differences shouldn’t prevent them from using an experience, even if that means adapting the experience to their needs.',
+  },
+]
 
 type Hobby = {
   title: string
@@ -135,6 +151,50 @@ export default function AboutPage() {
                 dances as a way to destress.
               </p>
             </div>
+          </div>
+        </section>
+
+        {/* How I design: core principles */}
+        <section aria-labelledby="principles-title" className="mt-24 md:mt-32">
+          <h2 id="principles-title" className="font-serif text-4xl tracking-tight md:text-5xl">
+            How I <span className="text-accent italic">design</span>
+          </h2>
+          <ol className="mt-10 grid gap-4 md:grid-cols-3">
+            {principles.map((p, i) => (
+              <li key={p.title} className="rounded-[1rem] bg-card p-7 md:p-8">
+                <span aria-hidden="true" className="font-serif text-3xl text-accent italic">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 className="mt-4 font-serif text-2xl leading-tight text-balance">{p.title}</h3>
+                <p className="mt-3 leading-relaxed text-pretty text-foreground/80">{p.text}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {/* Career goals */}
+        <section
+          aria-labelledby="looking-title"
+          className="mt-24 grid gap-8 md:mt-32 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-20"
+        >
+          <h2 id="looking-title" className="font-serif text-4xl leading-tight tracking-tight text-balance md:text-5xl">
+            What I’m <span className="text-accent italic">looking for</span>
+          </h2>
+          <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
+            <p>
+              I’m looking for <strong className="font-semibold">product design</strong> and{' '}
+              <strong className="font-semibold">UX research</strong> roles. I’m especially drawn to healthcare, but I’m
+              excited by meaningful problems in any field.
+            </p>
+            <p>
+              One of my favorite parts of design is finding problems no one knew existed. Solving them brings users a
+              kind of satisfaction they never expected. I love digging deep to understand why core usability and
+              functionality issues surface in the first place.
+            </p>
+            <p>
+              I enjoy designing both in the physical world and on screens, and I especially love finding ways to
+              connect the two.
+            </p>
           </div>
         </section>
 

@@ -54,6 +54,10 @@ export function Hero() {
           <p className="mt-3 max-w-xl text-lg leading-relaxed text-pretty text-muted-foreground md:text-xl">
             I apply HCI principles and thoughtful UI design to make complex technology feel second nature.
           </p>
+          <p className="mt-6 flex items-center gap-3 text-sm font-medium tracking-[0.12em] text-accent uppercase">
+            <span aria-hidden="true" className="h-px w-8 bg-accent/60" />
+            Product Designer &amp; UX Researcher
+          </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
               id="view-journey"
