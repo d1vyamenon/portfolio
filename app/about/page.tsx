@@ -178,7 +178,7 @@ export default function AboutPage() {
           <h2 id="looking-title" className="font-serif text-4xl leading-tight tracking-tight text-balance md:text-5xl">
             What I’m <span className="text-accent italic">looking for</span>
           </h2>
-          <div className="mt-8 max-w-3xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
+          <div className="mt-8 grid gap-6 text-lg leading-relaxed text-pretty md:grid-cols-3 md:gap-12">
             <p>
               I’m looking for <strong className="font-semibold">product design</strong> and{' '}
               <strong className="font-semibold">UX research</strong> roles. I’m especially drawn to healthcare, but I’m
@@ -202,7 +202,7 @@ export default function AboutPage() {
             <h2 id="outside-title" className="font-serif text-4xl leading-tight tracking-tight text-balance md:text-5xl">
               Outside of <span className="text-accent italic">design</span>
             </h2>
-            <div className="mt-8 max-w-3xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
+            <div className="mt-8 grid gap-6 text-lg leading-relaxed text-pretty md:grid-cols-2 md:gap-12">
               <p>
                 After a long day of work and classes, you’ll probably find me at a bouldering gym. When I’m not tearing
                 up my hands trying to climb little plastic rocks, I love to craft, especially jewelry and accessories!
@@ -214,7 +214,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="mt-16 md:mt-20">
-            <ul className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-14">
+            <ul className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-14">
               {hobbies.map((h) => (
                 <li key={h.title} className={h.offset}>
                   <figure
