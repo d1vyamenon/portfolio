@@ -154,51 +154,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* How I design: core principles */}
-        <section aria-labelledby="principles-title" className="mt-24 md:mt-32">
-          <h2 id="principles-title" className="font-serif text-4xl tracking-tight md:text-5xl">
-            How I <span className="text-accent italic">design</span>
-          </h2>
-          <ol className="mt-10 grid gap-4 md:grid-cols-3">
-            {principles.map((p, i) => (
-              <li key={p.title} className="rounded-[1rem] bg-card p-7 md:p-8">
-                <span aria-hidden="true" className="font-serif text-3xl text-accent italic">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <h3 className="mt-4 font-serif text-2xl leading-tight text-balance">{p.title}</h3>
-                <p className="mt-3 leading-relaxed text-pretty text-foreground/80">{p.text}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        {/* Career goals */}
-        <section
-          aria-labelledby="looking-title"
-          className="mt-24 grid gap-8 md:mt-32 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-20"
-        >
-          <h2 id="looking-title" className="font-serif text-4xl leading-tight tracking-tight text-balance md:text-5xl">
-            What I’m <span className="text-accent italic">looking for</span>
-          </h2>
-          <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
-            <p>
-              I’m looking for <strong className="font-semibold">product design</strong> and{' '}
-              <strong className="font-semibold">UX research</strong> roles. I’m especially drawn to healthcare, but I’m
-              excited by meaningful problems in any field.
-            </p>
-            <p>
-              One of my favorite parts of design is finding problems no one knew existed. Solving them brings users a
-              kind of satisfaction they never expected. I love digging deep to understand why core usability and
-              functionality issues surface in the first place.
-            </p>
-            <p>
-              I enjoy designing both in the physical world and on screens, and I especially love finding ways to
-              connect the two.
-            </p>
-          </div>
-        </section>
-
-        {/* Snapshots: a loose, scattered collage, no heading needed */}
+        {/* Personal: snapshots of the hobbies the intro mentions */}
         <section aria-label="Things I love outside of design" className="mt-24 md:mt-32">
           <ul className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-14">
             {hobbies.map((h) => (
@@ -224,6 +180,53 @@ export default function AboutPage() {
             ))}
           </ul>
         </section>
+
+        {/* Professional: how I design + what I'm looking for, grouped in one panel */}
+        <div className="mt-28 rounded-[1.75rem] bg-card px-6 py-14 md:mt-36 md:px-14 md:py-20">
+          {/* How I design: core principles */}
+          <section aria-labelledby="principles-title">
+            <h2 id="principles-title" className="font-serif text-4xl tracking-tight md:text-5xl">
+              How I <span className="text-accent italic">design</span>
+            </h2>
+            <ol className="mt-10 grid gap-4 md:grid-cols-3">
+              {principles.map((p, i) => (
+                <li key={p.title} className="rounded-[1rem] bg-background p-7 md:p-8">
+                  <span aria-hidden="true" className="font-serif text-3xl text-accent italic">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="mt-4 font-serif text-2xl leading-tight text-balance">{p.title}</h3>
+                  <p className="mt-3 leading-relaxed text-pretty text-foreground/80">{p.text}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          {/* Career goals */}
+          <section
+            aria-labelledby="looking-title"
+            className="mt-16 grid gap-8 border-t border-foreground/10 pt-16 md:mt-20 md:pt-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-20"
+          >
+            <h2 id="looking-title" className="font-serif text-4xl leading-tight tracking-tight text-balance md:text-5xl">
+              What I’m <span className="text-accent italic">looking for</span>
+            </h2>
+            <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-pretty md:text-xl">
+              <p>
+                I’m looking for <strong className="font-semibold">product design</strong> and{' '}
+                <strong className="font-semibold">UX research</strong> roles. I’m especially drawn to healthcare, but I’m
+                excited by meaningful problems in any field.
+              </p>
+              <p>
+                One of my favorite parts of design is finding problems no one knew existed. Solving them brings users a
+                kind of satisfaction they never expected. I love digging deep to understand why core usability and
+                functionality issues surface in the first place.
+              </p>
+              <p>
+                I enjoy designing both in the physical world and on screens, and I especially love finding ways to
+                connect the two.
+              </p>
+            </div>
+          </section>
+        </div>
       </main>
       <SiteFooter showContact={false} />
     </>

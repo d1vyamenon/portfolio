@@ -41,6 +41,10 @@ export function Hero() {
     <section aria-labelledby="hero-title" className="site-container pt-16 md:pt-24">
       <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-16">
         <div>
+          <p className="mb-6 flex items-center gap-3 text-sm font-medium tracking-[0.12em] text-accent uppercase">
+            <span aria-hidden="true" className="h-px w-8 bg-accent/60" />
+            Product Designer &amp; UX Researcher
+          </p>
           <h1
             id="hero-title"
             className="font-serif text-6xl leading-[0.95] font-normal tracking-tight text-balance sm:text-7xl md:text-8xl xl:text-9xl"
@@ -53,10 +57,6 @@ export function Hero() {
           </p>
           <p className="mt-3 max-w-xl text-lg leading-relaxed text-pretty text-muted-foreground md:text-xl">
             I apply HCI principles and thoughtful UI design to make complex technology feel second nature.
-          </p>
-          <p className="mt-6 flex items-center gap-3 text-sm font-medium tracking-[0.12em] text-accent uppercase">
-            <span aria-hidden="true" className="h-px w-8 bg-accent/60" />
-            Product Designer &amp; UX Researcher
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
